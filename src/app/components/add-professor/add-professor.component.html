@@ -1,0 +1,187 @@
+<mat-card>
+  <div class="container">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form">
+      <h2>Cadastro de Aluno</h2>
+      <h3>Informações Pessoais</h3>
+
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>INEP</mat-label>
+        <input matInput formControlName="inep" [ngClass]="{ 'is-invalid': submitted && f.inep.errors }">
+        <mat-hint *ngIf="submitted && f.inep.errors">{{aviso}}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>Nome Completo</mat-label>
+        <input matInput formControlName="nome" [ngClass]="{ 'is-invalid': submitted && f.nome.errors }">
+        <mat-hint *ngIf="submitted && f.nome.errors">{{aviso}}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>Nascimento</mat-label>
+        <input matInput [matDatepicker]="dataDeNascimento" formControlName="dataDeNascimento"
+          [ngClass]="{ 'is-invalid': submitted && f.dataDeNascimento.errors }">
+        <mat-datepicker-toggle matSuffix [for]="dataDeNascimento"></mat-datepicker-toggle>
+        <mat-datepicker #dataDeNascimento></mat-datepicker>
+        <mat-hint *ngIf="submitted && f.dataDeNascimento.errors">{{aviso}}</mat-hint>
+      </mat-form-field>
+
+      <mat-radio-group class="example-radio-group" formControlName="sexo"> <br>
+        <mat-label>Sexo:</mat-label>
+        <mat-radio-button class="example-radio-button" name="sexo" value="Masculino">Masculino</mat-radio-button>
+        <mat-radio-button class="example-radio-button" name="sexo" value="Feminino">Feminino</mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>Naturalidade</mat-label>
+        <input matInput formControlName="naturalidade" [ngClass]="{ 'is-invalid': submitted && f.naturalidade.errors }">
+        <mat-hint *ngIf="submitted && f.naturalidade.errors">{{aviso!}}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <mat-label>Estado de Nascimento</mat-label>
+        <mat-select formControlName="ufNaturalidade" name="ufNaturalidade">
+          <mat-option value=""> Selecione o Estado </mat-option>
+          <mat-option value="RN"> RN </mat-option>
+          <mat-option [value]="est.estado" *ngFor="let est of estados"> {{est.uf}} </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <h3>Documentação</h3>
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>Identidade</mat-label>
+        <input matInput mask="9999999999" formControlName="rg" [ngClass]="{ 'is-invalid': submitted && f.rg.errors }">
+        <mat-hint *ngIf="submitted && f.rg.errors">{{aviso!}}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>Orgão Emissor</mat-label>
+        <input matInput formControlName="orgaoEmissorRg"
+          [ngClass]="{ 'is-invalid': submitted && f.orgaoEmissorRg.errors }">
+        <mat-hint *ngIf="submitted && f.orgaoEmissorRg.errors">{{aviso!}}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <mat-label>Estado do RG</mat-label>
+        <mat-select formControlName="ufRg" name="ufRg">
+          <mat-option value=""> Selecione o Estado </mat-option>
+          <mat-option value="RN"> RN </mat-option>
+          <mat-option [value]="estado.uf" *ngFor="let estado of estados"> {{estado.uf}} </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>Data de Expedição</mat-label>
+        <input matInput [matDatepicker]="dataExpedicaoRg" formControlName="dataExpedicaoRg"
+          [ngClass]="{ 'is-invalid': submitted && f.dataExpedicaoRg.errors }">
+        <mat-datepicker-toggle matSuffix [for]="dataExpedicaoRg"></mat-datepicker-toggle>
+        <mat-datepicker #dataExpedicaoRg></mat-datepicker>
+        <mat-hint *ngIf="submitted && f.dataExpedicaoRg.errors">{{aviso}}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>CPF</mat-label>
+        <input matInput formControlName="cpf" mask="000.000.000-00" [dropSpecialCharacters]="false"
+          [ngClass]="{ 'is-invalid': submitted && f.cpf.errors }">
+        <mat-hint *ngIf="submitted && f.cpf.errors">{{aviso!}}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>NIS</mat-label>
+        <input matInput formControlName="nis" mask="000 000 000 00"
+          [ngClass]="{ 'is-invalid': submitted && f.nis.errors }">
+        <mat-hint *ngIf="submitted && f.nis.errors">{{aviso!}}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>SUS</mat-label>
+        <input matInput formControlName="sus" mask="0000 0000 0000 0000"
+          [ngClass]="{ 'is-invalid': submitted && f.sus.errors }">
+        <mat-hint *ngIf="submitted && f.sus.errors">{{aviso!}}</mat-hint>
+      </mat-form-field>
+
+      <h3>Endereço e Contato</h3>
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>Endereço</mat-label>
+        <input matInput formControlName="endereco" [ngClass]="{ 'is-invalid': submitted && f.endereco.errors }">
+        <mat-hint *ngIf="submitted && f.endereco.errors">{{aviso!}}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>Número</mat-label>
+        <input matInput formControlName="numero" mask="9999" [ngClass]="{ 'is-invalid': submitted && f.numero.errors }">
+        <mat-hint *ngIf="submitted && f.numero.errors">{{aviso!}}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>Bairro</mat-label>
+        <input matInput formControlName="bairro" [ngClass]="{ 'is-invalid': submitted && f.bairro.errors }">
+        <mat-hint *ngIf="submitted && f.bairro.errors">{{aviso!}}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>Cidade</mat-label>
+        <input matInput formControlName="cidade" [ngClass]="{ 'is-invalid': submitted && f.cidade.errors }">
+        <mat-hint *ngIf="submitted && f.cidade.errors">{{aviso!}}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <mat-label>Estado do Endereço</mat-label>
+        <mat-select formControlName="estado" name="estado">
+          <mat-option value=""> Selecione o Estado </mat-option>
+          <mat-option value="RN"> RN </mat-option>
+          <mat-option [value]="est.estado" *ngFor="let est of estados"> {{est.uf}} </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>E-Mail</mat-label>
+        <input matInput formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+        <mat-hint *ngIf="submitted && f.email.errors">{{aviso!}}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>Celular</mat-label>
+        <input matInput formControlName="celular" mask="00 00000-0000" [dropSpecialCharacters]="false"
+          [ngClass]="{ 'is-invalid': submitted && f.celular.errors }">
+        <mat-hint *ngIf="submitted && f.celular.errors">{{aviso!}}</mat-hint>
+      </mat-form-field>
+
+      <h3>Dados Acadêmicos</h3>
+
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>Matricula</mat-label>
+        <input matInput formControlName="matricula" [ngClass]="{ 'is-invalid': submitted && f.matricula.errors }">
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <mat-label>Titulação</mat-label>
+        <mat-select formControlName="nivelFormacao" name="estado">
+          <mat-option value=""> Selecione o Nível </mat-option>
+          <mat-option [value]="nivel" *ngFor="let nivel of niveis"> {{nivel}} </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>Curso</mat-label>
+        <input matInput formControlName="cursoFormacao" [ngClass]="{ 'is-invalid': submitted && f.curso.errors }">
+        <mat-hint *ngIf="submitted && f.curso.errors">{{aviso!}}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>Ano de Formação na Gradução</mat-label>
+        <input matInput formControlName="anoFormacao" mask="0000"
+          [ngClass]="{ 'is-invalid': submitted && f.anoFormacao.errors }">
+        <mat-hint *ngIf="submitted && f.anoFormacao.errors">{{aviso!}}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>Instituição da Formação</mat-label>
+        <input matInput formControlName="instituicaoFormacao"
+          [ngClass]="{ 'is-invalid': submitted && f.instituicaoFormacao.errors }">
+        <mat-hint *ngIf="submitted && f.instituicaoFormacao.errors">{{aviso!}}</mat-hint>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" [disabled]="!registerForm.valid">Cadastrar Aluno</button>
+    </form>
+  </div>
+</mat-card>

@@ -1,0 +1,36 @@
+mat-card {
+    h2 {
+      text-align: center;
+    }
+  }
+  
+  .form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .form-element {
+    width: 100%;
+  }
+  
+  mat-radio-group {
+    margin: 0 auto;
+    .example-radio-group {
+      display: inline-flex;
+      flex-direction: column;
+      margin: 5px;
+      margin-bottom: 15px;
+    }
+  
+    .example-radio-button {
+      margin: 5px;
+      margin-bottom: 20px;
+    }
+  
+    .example-selected-value {
+      margin: 15px 0;
+    }
+  }
+  

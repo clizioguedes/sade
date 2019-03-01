@@ -1,0 +1,33 @@
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  .btn-menu:focus {
+    outline: thin dotted;
+    outline: 0px auto -webkit-focus-ring-color;
+    outline-offset: 0px;
+  }
+  .container {
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+}
+mat-sidenav {
+  width: 200px;
+}
+mat-nav-list {
+  .mat-list-item {
+    margin-right: 30px;
+  }
+  .material-icons {
+    margin-right: 15px;
+  }
+}
+mat-sidenav-content {
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}

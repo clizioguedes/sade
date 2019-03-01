@@ -1,0 +1,115 @@
+<mat-card>
+  <h4>Dados Gerais</h4>
+  <table class="info">
+    <tr>
+      <td>Nome</td>
+      <td colspan="5">{{aluno?.nome}}</td>
+    </tr>
+    <tr>
+      <td>Data de Nascimento</td>
+      <td colspan="5"> {{aluno?.dataDeNascimento.seconds * 1000 | date: 'dd/MM/yyyy'}} </td>
+    </tr>
+    <tr>
+      <td>Nome da Mãe</td>
+      <td colspan="5"> {{aluno?.nomeDaMae}}</td>
+    </tr>
+    <tr>
+      <td>Nome do Pai</td>
+      <td colspan="5"> {{aluno?.nomeDoPai}} </td>
+    </tr>
+    <tr>
+      <td>Naturalidade</td>
+      <td colspan="5"> {{aluno?.naturalidade}} </td>
+    </tr>
+    <tr>
+      <td>Sexo</td>
+      <td colspan="5"> {{aluno?.sexo}} </td>
+    </tr>
+    <tr>
+      <td> Identidade </td>
+      <td colspan="5"> {{aluno?.rg}} </td>
+    </tr>
+    <tr>
+      <td> Data de Expedição </td>
+      <td colspan="5"> {{aluno?.dataExpedicaoRg.seconds * 1000 | date: 'dd/MM/yyyy'}} </td>
+    </tr>
+    <tr>
+      <td>Orgão Emissor</td>
+      <td colspan="5"> {{aluno?.orgaoEmissorRg}} </td>
+    </tr>
+    <tr>
+      <td> UF</td>
+      <td colspan="5"> {{aluno?.ufRg}} </td>
+    </tr>
+    <tr>
+      <td>CPF</td>
+      <td colspan="5"> {{aluno?.cpf}} </td>
+    </tr>
+    <tr>
+      <td>NIS</td>
+      <td colspan="5"> {{aluno?.nis}} </td>
+    </tr>
+    <tr>
+      <td>SUS</td>
+      <td colspan="5"> {{aluno?.sus}}</td>
+    </tr>
+    <!--
+  <tr>
+    <td>Situação</td>
+    <td colspan="5">
+      <span [ngClass]="{
+                                                'status-ativo':
+                                                aluno?.situacao ===
+                                                'Ativo', 'status-inativo':
+                                                aluno?.situacao ===
+                                                'Inativo' }">
+        {{aluno?.situacao}}
+      </span>
+    </td>
+  </tr>
+  -->
+  </table>
+</mat-card>
+<mat-card>
+  <h4> Endereço e Contato </h4>
+  <table class="info">
+    <tr>
+      <td> Endereço </td>
+      <td colspan="3"> {{aluno?.endereco}} </td>
+    </tr>
+    <tr>
+      <td> Número </td>
+      <td colspan="3"> {{aluno?.numero}} </td>
+    </tr>
+    <tr>
+      <td> Bairro </td>
+      <td colspan="5"> {{aluno?.bairro}} </td>
+    </tr>
+    <tr>
+      <td> Cidade </td>
+      <td colspan="3"> {{aluno?.cidade}} </td>
+    </tr>
+    <tr>
+      <td> Estado </td>
+      <td colspan="3"> {{aluno?.estado}} </td>
+    </tr>
+    <tr>
+      <td>Celular</td>
+      <td colspan="5"> {{aluno?.celular}} </td>
+    </tr>
+    <tr>
+      <td>E-mail</td>
+      <td colspan="5"> {{aluno?.email}} </td>
+    </tr>
+  </table>
+</mat-card>
+
+<mat-card class="table-card">
+  <h4> Dados Acadêmicos / Boletim </h4>
+  <table class="info">
+    <tr>
+      <td>INEP</td>
+      <td colspan="5">{{aluno?.inep}}</td>
+    </tr>
+  </table>
+</mat-card>

@@ -1,0 +1,18 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form">
+  <div class="example-container">
+    <h3>Cadastro de Disciplina</h3>
+    <mat-form-field appearance="outline">
+      <mat-label>Nome da Disciplina</mat-label>
+      <input matInput formControlName="nome" [ngClass]="{ 'is-invalid': submitted && f.nome.errors }">
+      <mat-hint *ngIf="submitted && f.nome.errors">{{aviso}}</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Professor Responsavel" formControlName="idProfessor">
+        <mat-option *ngFor="let professor of professores" [value]="professor.id">{{professor.nome}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="btn">Cadastrar Disciplina</button>
+    <button mat-raised-button color="warn" class="btn" (click)="onNoSubmit()">Cancelar</button>
+  </div>
+</form>
