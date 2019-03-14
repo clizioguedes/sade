@@ -1,72 +1,65 @@
-<div class="container">
-  <mat-grid-list cols="3">
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>Módulo do Professor</mat-card-title>
-          <mat-card-subtitle>Cadastro e Listagem dos Professores da Instituição</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="../../../assets/images/professores.png">
-        <mat-card-content>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button [routerLink]="['/list-professores']" routerLinkActive="router-link-active">
-            <i class="material-icons">list</i>
-            PROFESSORES
-          </button>
-          <button mat-button [routerLink]="['/add-professor']" routerLinkActive="router-link-active">
-            <i class="material-icons">add</i>
-            CADASTRAR PROFESSOR
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </mat-grid-tile>
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Módulo do Professor</mat-card-title>
+        <mat-card-subtitle>Cadastro e Listagem dos Professores da Instituição</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="../../../assets/images/professores.png">
+      <mat-card-content>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-fab color="primary" class="btn-list" [routerLink]="['/list-professores']">
+          <i class="material-icons">list</i>
+        </button>
+        <button mat-fab color="accent" class="btn-add" [routerLink]="['/add-professor']">
+          <i class="material-icons">add</i>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>Módulo de Aluno</mat-card-title>
-          <mat-card-subtitle>Cadastro e Listagem dos Alunos da Instituição</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="../../../assets/images/alunos.png">
-        <mat-card-content>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button [routerLink]="['/list-alunos']" routerLinkActive="router-link-active">
-            <i class="material-icons">list</i>
-            ALUNOS
-          </button>
-          <button mat-button [routerLink]="['/add-aluno']" routerLinkActive="router-link-active">
-            <i class="material-icons">add</i>
-            CADASTRAR ALUNO
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </mat-grid-tile>
+  <div class="col-md-4 col-sm-12">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Módulo de Aluno</mat-card-title>
+        <mat-card-subtitle>Cadastro e Listagem dos Alunos da Instituição</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="../../../assets/images/alunos.png">
+      <mat-card-content>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-fab color="primary" class="btn-list" [routerLink]="['/list-alunos']">
+          <i class="material-icons">list</i>
+        </button>
+        <button mat-fab color="accent" class="btn-add" [routerLink]="['/add-aluno']">
+          <i class="material-icons">add</i>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>Turmas</mat-card-title>
-          <mat-card-subtitle>Cadastro e Listagem de Turmas da Instituição</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="../../../assets/images/turmas.jpg">
-        <mat-card-content>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button [routerLink]="['/list-turmas']" routerLinkActive="router-link-active">
-            <i class="material-icons">list</i>
-            TURMAS
-          </button>
-          <button mat-button [routerLink]="['/add-turma']" routerLinkActive="router-link-active">
-            <i class="material-icons">add</i>
-            CADASTRAR TURMA
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <div class="col-md-4 col-sm-12">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Turmas</mat-card-title>
+        <mat-card-subtitle>Cadastro e Listagem de Turmas da Instituição</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="../../../assets/images/turmas.jpg">
+      <mat-card-content>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-fab color="primary" class="btn-list" [routerLink]="['/list-turmas']">
+          <i class="material-icons">list</i>
+        </button>
+        <button mat-fab color="accent" class="btn-add" [routerLink]="['/add-turma']">
+          <i class="material-icons">add</i>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
 </div>

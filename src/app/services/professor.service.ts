@@ -49,4 +49,9 @@ export class ProfessorService {
     this.professorDocument = this.professoresCollection.doc(`${professor.id}`);
     this.professorDocument.delete();
   }
+
+  addId(idProfessor: any) {
+    this.professorDocument.update({ id: idProfessor });
+    console.log('ID do Professor foi Adicionado com Sucesso');
+  }
 }

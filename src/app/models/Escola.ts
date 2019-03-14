@@ -33,7 +33,9 @@ export interface Turma {
     id?: string;
     dataCadastro?: string;
     nome?: string;
-    turno?: string;
+    periodo?: string;
+    nivel?: string;
+    modalidade?: string;
     disciplinas?: Disciplina[];
 }
 

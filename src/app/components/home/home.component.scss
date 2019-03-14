@@ -1,15 +1,22 @@
 .body {
   background-color: #e1e2e1;
+  overflow: hidden;
 }
 .example-card {
   max-width: 400px;
-  max-height: 400px;
+  max-height: 500px;
   margin: 0 auto;
-  margin-bottom: 5px;
-  margin-top: 5px;
+  margin-bottom: 20px;
+  margin-top: 20px;
   background-color: #9c27b0;
   color: #ffffff;
   mat-card-subtitle {
     color: #ffffff;
+  }
+  .btn-list {
+    margin: 5px;
+  }
+  .btn-add {
+    margin: 5px;
   }
 }

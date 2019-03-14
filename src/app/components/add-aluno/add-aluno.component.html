@@ -2,13 +2,13 @@
   <div class="container">
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form">
       <h2>Cadastro de Aluno</h2>
-      <h3>Informações Pessoais</h3>
+      <h5>Informações Pessoais</h5>
 
       <mat-form-field appearance="outline" class="form-element">
-          <mat-label>Número INEP</mat-label>
-          <input matInput formControlName="inep" mask="000000000000" [ngClass]="{ 'is-invalid': submitted && f.inep.errors }">
-          <mat-hint *ngIf="submitted && f.inep.errors">{{aviso}}</mat-hint>
-        </mat-form-field>
+        <mat-label>Número INEP</mat-label>
+        <input matInput formControlName="inep" mask="000000000000" [ngClass]="{ 'is-invalid': submitted && f.inep.errors }">
+        <mat-hint *ngIf="submitted && f.inep.errors">{{aviso}}</mat-hint>
+      </mat-form-field>
 
       <mat-form-field appearance="outline" class="form-element">
         <mat-label>Nome Completo</mat-label>
@@ -18,8 +18,7 @@
 
       <mat-form-field appearance="outline" class="form-element">
         <mat-label>Nascimento</mat-label>
-        <input matInput [matDatepicker]="dataDeNascimento" formControlName="dataDeNascimento"
-          [ngClass]="{ 'is-invalid': submitted && f.dataDeNascimento.errors }">
+        <input matInput [matDatepicker]="dataDeNascimento" formControlName="dataDeNascimento" [ngClass]="{ 'is-invalid': submitted && f.dataDeNascimento.errors }">
         <mat-datepicker-toggle matSuffix [for]="dataDeNascimento"></mat-datepicker-toggle>
         <mat-datepicker #dataDeNascimento></mat-datepicker>
         <mat-hint *ngIf="submitted && f.dataDeNascimento.errors">{{aviso}}</mat-hint>
@@ -57,7 +56,7 @@
         </mat-select>
       </mat-form-field>
 
-      <h3>Documentação</h3>
+      <h5>Documentação</h5>
       <mat-form-field appearance="outline" class="form-element">
         <mat-label>Identidade</mat-label>
         <input matInput mask="9999999999" formControlName="rg" [ngClass]="{ 'is-invalid': submitted && f.rg.errors }">
@@ -66,8 +65,7 @@
 
       <mat-form-field appearance="outline" class="form-element">
         <mat-label>Orgão Emissor</mat-label>
-        <input matInput formControlName="orgaoEmissorRg"
-          [ngClass]="{ 'is-invalid': submitted && f.orgaoEmissorRg.errors }">
+        <input matInput formControlName="orgaoEmissorRg" [ngClass]="{ 'is-invalid': submitted && f.orgaoEmissorRg.errors }">
         <mat-hint *ngIf="submitted && f.orgaoEmissorRg.errors">{{aviso!}}</mat-hint>
       </mat-form-field>
 
@@ -82,8 +80,7 @@
 
       <mat-form-field appearance="outline" class="form-element">
         <mat-label>Data de Expedição</mat-label>
-        <input matInput [matDatepicker]="dataExpedicaoRg" formControlName="dataExpedicaoRg"
-          [ngClass]="{ 'is-invalid': submitted && f.dataExpedicaoRg.errors }">
+        <input matInput [matDatepicker]="dataExpedicaoRg" formControlName="dataExpedicaoRg" [ngClass]="{ 'is-invalid': submitted && f.dataExpedicaoRg.errors }">
         <mat-datepicker-toggle matSuffix [for]="dataExpedicaoRg"></mat-datepicker-toggle>
         <mat-datepicker #dataExpedicaoRg></mat-datepicker>
         <mat-hint *ngIf="submitted && f.dataExpedicaoRg.errors">{{aviso}}</mat-hint>
@@ -91,26 +88,23 @@
 
       <mat-form-field appearance="outline" class="form-element">
         <mat-label>CPF</mat-label>
-        <input matInput formControlName="cpf" mask="000.000.000-00" [dropSpecialCharacters]="false"
-          [ngClass]="{ 'is-invalid': submitted && f.cpf.errors }">
+        <input matInput formControlName="cpf" mask="000.000.000-00" [dropSpecialCharacters]="false" [ngClass]="{ 'is-invalid': submitted && f.cpf.errors }">
         <mat-hint *ngIf="submitted && f.cpf.errors">{{aviso!}}</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="form-element">
         <mat-label>NIS</mat-label>
-        <input matInput formControlName="nis" mask="000 000 000 00"
-          [ngClass]="{ 'is-invalid': submitted && f.nis.errors }">
+        <input matInput formControlName="nis" mask="000 000 000 00" [ngClass]="{ 'is-invalid': submitted && f.nis.errors }">
         <mat-hint *ngIf="submitted && f.nis.errors">{{aviso!}}</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="form-element">
         <mat-label>SUS</mat-label>
-        <input matInput formControlName="sus" mask="0000 0000 0000 0000"
-          [ngClass]="{ 'is-invalid': submitted && f.sus.errors }">
+        <input matInput formControlName="sus" mask="0000 0000 0000 0000" [ngClass]="{ 'is-invalid': submitted && f.sus.errors }">
         <mat-hint *ngIf="submitted && f.sus.errors">{{aviso!}}</mat-hint>
       </mat-form-field>
 
-      <h3>Endereço e Contato</h3>
+      <h5>Endereço e Contato</h5>
       <mat-form-field appearance="outline" class="form-element">
         <mat-label>Endereço</mat-label>
         <input matInput formControlName="endereco" [ngClass]="{ 'is-invalid': submitted && f.endereco.errors }">

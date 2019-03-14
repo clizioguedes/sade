@@ -95,6 +95,10 @@ import { DashboardProfessorComponent } from './components/dashboard-professor/da
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [HomeComponent, AddDisciplinaComponent]
+  entryComponents: [
+    HomeComponent,
+    AddDisciplinaComponent,
+    EditTurmaComponent,
+  ]
 })
 export class AppModule { }

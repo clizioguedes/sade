@@ -23,7 +23,6 @@ export class AddTurmaComponent implements OnInit {
     'Ensino Fundamental',
     'Ensino Médio',
     'Educação de Jovens e Adultos (EJA)',
-    'Ensino Médio',
     'Educação Profissional Técnica de Nível Médio',
   ];
 
@@ -37,8 +36,9 @@ export class AddTurmaComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       dataCadastro: [new Date()],
       nome: ['', Validators.required],
-      modalidade: ['', Validators.required],
+      nivel: ['', Validators.required],
       periodo: ['', Validators.required],
+      modalidade: [''],
     });
   }
 

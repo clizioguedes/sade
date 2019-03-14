@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Turma } from 'src/app/models/Escola';
 import { TurmaService } from 'src/app/services/turma.service';
 import { ActivatedRoute } from '@angular/router';
-import { AlunoService } from 'src/app/services/aluno.service';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { AddDisciplinaComponent } from './add-disciplina/add-disciplina.component';
 import { DisciplinaService } from 'src/app/services/disciplina.service';
+import { EditTurmaComponent } from '../edit-turma/edit-turma.component';
 
 @Component({
   selector: 'app-turma',
@@ -18,11 +18,11 @@ export class TurmaComponent implements OnInit {
   turma: Turma;
   alunosDaTurma: Array<any>;
   disciplinas: Array<any>;
-  fileNameDialogRef: MatDialogRef<AddDisciplinaComponent>;
+  fileNameDialogRefAdd: MatDialogRef<AddDisciplinaComponent>;
+  fileNameDialogRefEdit: MatDialogRef<EditTurmaComponent>;
 
   constructor(
     private firestoreTurma: TurmaService,
-    private firestoreAluno: AlunoService,
     private firestoreDisciplina: DisciplinaService,
     private route: ActivatedRoute,
     public dialog: MatDialog,
@@ -34,21 +34,24 @@ export class TurmaComponent implements OnInit {
         this.firestoreTurma.addId(this.idTurma);
       }
     });
-    this.firestoreAluno.getAlunosTurma(this.idTurma).subscribe(alunosDaTurma => {
-      this.alunosDaTurma = alunosDaTurma;
-    });
 
     this.firestoreDisciplina.getDisciplinas(this.idTurma).subscribe(disciplinas => {
       this.disciplinas = disciplinas;
     });
   }
 
-  openDialog() {
-    this.fileNameDialogRef = this.dialog.open(AddDisciplinaComponent, {
+  ngOnInit() {
+  }
+
+  openDialogAddDisciplina() {
+    this.fileNameDialogRefAdd = this.dialog.open(AddDisciplinaComponent, {
       data: this.turma
     });
   }
 
-  ngOnInit() {
+  openDialogEditTurma() {
+    this.fileNameDialogRefEdit = this.dialog.open(EditTurmaComponent, {
+      data: this.turma
+    });
   }
 }

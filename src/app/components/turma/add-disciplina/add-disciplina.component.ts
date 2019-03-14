@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Professor } from 'src/app/models/Escola';
-import { DisciplinaService } from '../../../services/disciplina.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { ProfessorService } from 'src/app/services/professor.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Professor } from 'src/app/models/Escola';
+import { DisciplinaService } from '../../../services/disciplina.service';
 
 @Component({
   selector: 'app-add-disciplina',
@@ -23,9 +23,9 @@ export class AddDisciplinaComponent implements OnInit {
     private firestoreDisciplina: DisciplinaService,
     private firestoreProfessor: ProfessorService,
     private formBuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public dataTurma: any
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.idTurma = dataTurma.id;
+    this.idTurma = data.id;
   }
 
   ngOnInit() {

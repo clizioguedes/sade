@@ -9,10 +9,6 @@
     outline: 0px auto -webkit-focus-ring-color;
     outline-offset: 0px;
   }
-  .container {
-    margin-left: 1%;
-    margin-right: 1%;
-  }
 }
 mat-sidenav {
   width: 200px;
@@ -30,4 +26,14 @@ mat-sidenav-content {
     color: white;
     text-decoration: none;
   }
+}
+
+.footer {
+  position: relative;
+  margin-top: 20px;
+}
+.spacer {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
 }

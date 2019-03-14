@@ -1,7 +1,7 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form">
   <div class="example-container">
     <h3>Cadastro de Disciplina</h3>
-    <mat-form-field appearance="outline">
+    <mat-form-field>
       <mat-label>Nome da Disciplina</mat-label>
       <input matInput formControlName="nome" [ngClass]="{ 'is-invalid': submitted && f.nome.errors }">
       <mat-hint *ngIf="submitted && f.nome.errors">{{aviso}}</mat-hint>
