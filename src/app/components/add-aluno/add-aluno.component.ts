@@ -80,9 +80,8 @@ export class AddAlunoComponent implements OnInit {
       estado: ['', Validators.required],
       email: [''],
       celular: [''],
-      situacao: [''],
-      status: [''],
-      turma: ['']
+      situacao: ['Esperando Matricula'],
+      idTurma: ['']
     });
   }
 

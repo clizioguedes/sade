@@ -20,18 +20,19 @@
       </tr>
     </table>
     <div class="actions">
-      <button mat-raised-button color="primary" class="action" (click)="openDialogAddDisciplina()">Cadastrar Disciplina</button>
-      <button mat-raised-button color="accent" class="action" (click)="openDialogEditTurma()"><i class="material-icons">edit</i>Editar
+      <button mat-raised-button color="primary" class="action" (click)="openDialogAddDisciplina()">Cadastrar
+        Disciplina</button>
+      <button mat-raised-button color="accent" class="action" (click)="openDialogAddDisciplina()">Matricular
+        Alunos</button>
+      <button mat-raised-button color="warn" class="action" (click)="openDialogEditTurma()"><i
+          class="material-icons">edit</i>Editar
         Turma</button>
     </div>
     <router-outlet></router-outlet>
   </mat-card>
 
-  <mat-card>
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Disciplinas Ofertadas</mat-card-title>
-    </mat-card-header>
+  <mat-card class="section">
+    <h4>Disciplinas Ofertadas</h4>
     <div class="row">
       <div class="col" *ngFor="let disciplina of disciplinas">
         <mat-card class="example-card-disciplina">
@@ -48,6 +49,25 @@
         </mat-card>
       </div>
     </div>
+  </mat-card>
 
+  <mat-card class="section">
+    <h4>Alunos Matriculados</h4>
+    <div class="row">
+      <div class="col" *ngFor="let disciplina of disciplinas">
+        <mat-card class="example-card-disciplina">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{disciplina.nome}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-actions>
+            <button mat-button routerLink="disciplina/{{disciplina.id}}">
+              <i class="material-icons">info</i>
+              Detalhes
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
   </mat-card>
 </div>

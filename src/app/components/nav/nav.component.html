@@ -8,28 +8,36 @@
       <a mat-list-item class="mat-list-item" routerLink="/" (click)="close('toggle button')" title="Jero Escolar">
         <i class="material-icons">home</i>Início</a>
       <mat-divider></mat-divider>
-      <a mat-list-item class="mat-list-item" routerLink="/dashboard-aluno" (click)="close('toggle button')" title="Configurações do Aluno">
+      <a mat-list-item class="mat-list-item" routerLink="/dashboard-aluno" (click)="close('toggle button')"
+        title="Configurações do Aluno">
         <i class="material-icons">folder</i>Aluno</a>
-      <a mat-list-item class="mat-list-item" routerLink="/dashboard-professor" (click)="close('toggle button')" title="Configurações do Professor">
+      <a mat-list-item class="mat-list-item" routerLink="/dashboard-professor" (click)="close('toggle button')"
+        title="Configurações do Professor">
         <i class="material-icons">folder</i>Professor</a>
-      <a mat-list-item class="mat-list-item" routerLink="/dashboard-turma" (click)="close('toggle button')" title="Configurações de Turma">
+      <a mat-list-item class="mat-list-item" routerLink="/dashboard-turma" (click)="close('toggle button')"
+        title="Configurações de Turma">
         <i class="material-icons">folder</i>Turma</a>
     </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button mat-button class="btn-menu" (click)="sidenav.open()"><i class="material-icons">menu</i></button>
-      <a [routerLink]="['/']">
-        <span>Jero Escolar</span>
-      </a>
+      <div class="title">
+        <button mat-button class="btn-menu" (click)="sidenav.open()"><i class="material-icons">menu</i></button>
+        <a [routerLink]="['/']">
+          <span>Escola Municipal Sebastina Alves Nôga</span>
+        </a>
+      </div>
+      <div class="instituicao-title">
+
+      </div>
     </mat-toolbar>
     <div class="container">
       <router-outlet></router-outlet>
     </div>
     <mat-toolbar color='primary' class="footer">
       <span class='spacer'></span>
-      <h3>© Copyright Angular Apps 2017.</h3>
+      <h5>© Copyright Jero Escolar 2019</h5>
       <span class='spacer'></span>
     </mat-toolbar>
   </mat-sidenav-content>

@@ -18,7 +18,7 @@ export class AlunoService {
   constructor(private firestore: AngularFirestore) { }
 
   getAlunos() {
-    this.alunosCollection = this.firestore.collection('alunos/');
+    this.alunosCollection = this.firestore.collection('alunos/', ref => ref.orderBy('nome'));
     this.alunos = this.alunosCollection
       .snapshotChanges().pipe(
         map(changes => {

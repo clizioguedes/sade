@@ -1,7 +1,7 @@
 // import { HistoricoEscolar } from './Historico';
 export interface Aluno {
     id?: string;
-    dataCadastro?: string;
+    dataCadastro?: Date;
     inep?: string;
     nome?: string;
     dataDeNascimento?: Date;
@@ -18,15 +18,14 @@ export interface Aluno {
     nis?: string;
     sus?: string;
     endereco?: string;
-    numero?: string;
+    numero?: number;
     bairro?: string;
     cidade?: string;
     estado?: string;
     email?: string;
     celular?: string;
-    turma?: Turma;
+    idTurma?: string;
     situacao?: string; // Matricula Cancelada, Transferido, Cursando, Esperando Matricula
-    status?: boolean; // true = ativo, false = inativo
 }
 
 export interface Turma {

@@ -6,6 +6,7 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { AddDisciplinaComponent } from './add-disciplina/add-disciplina.component';
 import { DisciplinaService } from 'src/app/services/disciplina.service';
 import { EditTurmaComponent } from '../edit-turma/edit-turma.component';
+import { AlunoService } from 'src/app/services/aluno.service';
 
 @Component({
   selector: 'app-turma',
@@ -24,6 +25,7 @@ export class TurmaComponent implements OnInit {
   constructor(
     private firestoreTurma: TurmaService,
     private firestoreDisciplina: DisciplinaService,
+    private firestoreAluno: AlunoService,
     private route: ActivatedRoute,
     public dialog: MatDialog,
   ) {
@@ -34,9 +36,12 @@ export class TurmaComponent implements OnInit {
         this.firestoreTurma.addId(this.idTurma);
       }
     });
-
     this.firestoreDisciplina.getDisciplinas(this.idTurma).subscribe(disciplinas => {
       this.disciplinas = disciplinas;
+    });
+
+    this.firestoreAluno.getAlunosTurma(this.idTurma).subscribe(alunosDaTurma => {
+      this.alunosDaTurma = alunosDaTurma;
     });
   }
 
