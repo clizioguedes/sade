@@ -1,10 +1,11 @@
+.toolbar {
+  position: absolute !important;
+}
+.tool-menu {
+  color: whitesmoke;
+}
 .example-container {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
+  overflow: hidden;
   mat-sidenav {
     width: 200px;
   }
@@ -43,6 +44,7 @@
       -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
       flex: 1 1 auto;
+      font-size: 10px;
     }
   }
 }

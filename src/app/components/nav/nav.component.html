@@ -1,12 +1,13 @@
-<mat-sidenav-container class="example-container" (backdropClick)="close('backdrop')">
-  <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose role="navigation">
-    <!-- <p><button mat-button (click)="close('toggle button')">Toggle</button></p> -->
+<mat-toolbar color="primary" class="toolbar">
+  <mat-toolbar-row>
+    <span>Jero Escolar</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container class="example-container" fullscreen>
+  <mat-sidenav #drawer mode="side" opened role="navigation">
     <mat-nav-list>
       <a mat-list-item class="mat-list-item" routerLink="/" (click)="close('toggle button')" title="Jero Escolar">
-        <i class="material-icons">menu</i>Jero Escolar</a>
-      <mat-divider></mat-divider>
-      <a mat-list-item class="mat-list-item" routerLink="/" (click)="close('toggle button')" title="Jero Escolar">
-        <i class="material-icons">home</i>Início</a>
+        <i class="material-icons">home</i>Jero Escolar</a>
       <mat-divider></mat-divider>
       <a mat-list-item class="mat-list-item" routerLink="/dashboard-aluno" (click)="close('toggle button')"
         title="Configurações do Aluno">
@@ -19,26 +20,7 @@
         <i class="material-icons">folder</i>Turma</a>
     </mat-nav-list>
   </mat-sidenav>
-
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <div class="title">
-        <button mat-button class="btn-menu" (click)="sidenav.open()"><i class="material-icons">menu</i></button>
-        <a [routerLink]="['/']">
-          <span>Escola Municipal Sebastina Alves Nôga</span>
-        </a>
-      </div>
-      <div class="instituicao-title">
-
-      </div>
-    </mat-toolbar>
-    <div class="container">
-      <router-outlet></router-outlet>
-    </div>
-    <mat-toolbar color='primary' class="footer">
-      <span class='spacer'></span>
-      <h5>© Copyright Jero Escolar 2019</h5>
-      <span class='spacer'></span>
-    </mat-toolbar>
+    
   </mat-sidenav-content>
 </mat-sidenav-container>

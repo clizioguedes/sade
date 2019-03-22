@@ -1,0 +1,124 @@
+<mat-card>
+  <button mat-flat-button routerLink="/edit-student/{{id}}" color="primary">Editar Aluno</button>
+  <h4>Dados Gerais</h4>
+  <table class="info">
+    <tr>
+      <td>Nome</td>
+      <td colspan="5">{{student?.nome}}</td>
+    </tr>
+    <tr>
+      <td>Data de Nascimento</td>
+      <td colspan="5"> {{student?.dataDeNascimento.seconds * 1000 | date: 'dd/MM/yyyy'}} </td>
+    </tr>
+    <tr>
+      <td>Nome da Mãe</td>
+      <td colspan="5"> {{student?.nomeDaMae}}</td>
+    </tr>
+    <tr>
+      <td>Nome do Pai</td>
+      <td colspan="5"> {{student?.nomeDoPai}} </td>
+    </tr>
+    <tr>
+      <td>Naturalidade</td>
+      <td colspan="5"> {{student?.naturalidade}} </td>
+    </tr>
+    <tr>
+      <td>Sexo</td>
+      <td colspan="5"> {{student?.sexo}} </td>
+    </tr>
+    <tr>
+      <td> Identidade </td>
+      <td colspan="5"> {{student?.rg}} </td>
+    </tr>
+    <tr>
+      <td> Data de Expedição </td>
+      <td colspan="5"> {{student?.dataExpedicaoRg.seconds * 1000 | date: 'dd/MM/yyyy'}} </td>
+    </tr>
+    <tr>
+      <td>Orgão Emissor</td>
+      <td colspan="5"> {{student?.orgaoEmissorRg}} </td>
+    </tr>
+    <tr>
+      <td> UF</td>
+      <td colspan="5"> {{student?.ufRg}} </td>
+    </tr>
+    <tr>
+      <td>CPF</td>
+      <td colspan="5"> {{student?.cpf}} </td>
+    </tr>
+    <tr>
+      <td>NIS</td>
+      <td colspan="5"> {{student?.nis}} </td>
+    </tr>
+    <tr>
+      <td>SUS</td>
+      <td colspan="5"> {{student?.sus}}</td>
+    </tr>
+    <!--
+    <tr>
+      <td>Situação</td>
+      <td colspan="5">
+        <span [ngClass]="{
+                                                  'status-ativo':
+                                                  student?.situacao ===
+                                                  'Ativo', 'status-inativo':
+                                                  student?.situacao ===
+                                                  'Inativo' }">
+          {{student?.situacao}}
+        </span>
+      </td>
+    </tr>
+    -->
+  </table>
+</mat-card>
+<mat-card>
+  <h4> Endereço e Contato </h4>
+  <table class="info">
+    <tr>
+      <td> Endereço </td>
+      <td colspan="3"> {{student?.endereco}} </td>
+    </tr>
+    <tr>
+      <td> Número </td>
+      <td colspan="3"> {{student?.numero}} </td>
+    </tr>
+    <tr>
+      <td> Bairro </td>
+      <td colspan="5"> {{student?.bairro}} </td>
+    </tr>
+    <tr>
+      <td> Cidade </td>
+      <td colspan="3"> {{student?.cidade}} </td>
+    </tr>
+    <tr>
+      <td> Estado </td>
+      <td colspan="3"> {{student?.estado}} </td>
+    </tr>
+    <tr>
+      <td>Celular</td>
+      <td colspan="5"> {{student?.celular}} </td>
+    </tr>
+    <tr>
+      <td>E-mail</td>
+      <td colspan="5"> {{student?.email}} </td>
+    </tr>
+  </table>
+</mat-card>
+
+<mat-card class="table-card">
+  <h4> Dados Acadêmicos
+    <button mat-button (click)="openDialogEditDadosAcademicos()">
+      <i class="material-icons" color="primary">edit</i>
+    </button>
+  </h4>
+  <table class="info">
+    <tr>
+      <td>INEP</td>
+      <td colspan="5">{{student?.inep}}</td>
+    </tr>
+    <tr>
+      <td>Status</td>
+      <td colspan="5">{{student?.status}}</td>
+    </tr>
+  </table>
+</mat-card>

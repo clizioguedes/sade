@@ -1,64 +1,74 @@
 import { NgModule } from '@angular/core';
 //
 import { Routes, RouterModule } from '@angular/router';
+//
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { HomeComponent } from './components/home/home.component';
 //
-import { AddAlunoComponent } from './components/add-aluno/add-aluno.component';
-import { ListAlunosComponent } from './components/list-alunos/list-alunos.component';
-import { EditAlunoComponent } from './components/edit-aluno/edit-aluno.component';
-import { AlunoComponent } from './components/aluno/aluno.component';
+import { AddStudentComponent } from './components/student/add-student/add-student.component';
+import { EditStudentComponent } from './components/student/edit-student/edit-student.component';
+import { StudentDetailsComponent } from './components/student/student-details/student-details.component';
+import { ListStudentsComponent } from './components/student/list-students/list-students.component';
 //
-import { AddTurmaComponent } from './components/add-turma/add-turma.component';
-import { ListTurmasComponent } from './components/list-turmas/list-turmas.component';
-import { EditTurmaComponent } from './components/edit-turma/edit-turma.component';
-import { TurmaComponent } from './components/turma/turma.component';
+import { EditTeacherComponent } from './components/teacher/edit-teacher/edit-teacher.component';
+import { AddTeacherComponent } from './components/teacher/add-teacher/add-teacher.component';
+import { ListTeachersComponent } from './components/teacher/list-teachers/list-teachers.component';
+import { TeacherDetailsComponent } from './components/teacher/teacher-details/teacher-details.component';
 //
-import { AddDisciplinaComponent } from './components/turma/add-disciplina/add-disciplina.component';
-import { ListDisciplinasComponent } from './components/turma/list-disciplinas/list-disciplinas.component';
-import { EditDisciplinaComponent } from './components/turma/edit-disciplina/edit-disciplina.component';
-import { DisciplinaComponent } from './components/turma/disciplina/disciplina.component';
+import { SchoolDetailsComponent } from './components/school/school-details/school-details.component';
+import { ListSchoolsComponent } from './components/school/list-schools/list-schools.component';
+import { AddSchoolComponent } from './components/school/add-school/add-school.component';
+import { EditSchoolComponent } from './components/school/edit-school/edit-school.component';
 //
-import { AddProfessorComponent } from './components/add-professor/add-professor.component';
-import { ListProfessoresComponent } from './components/list-professores/list-professores.component';
-import { EditProfessorComponent } from './components/edit-professor/edit-professor.component';
-import { ProfessorComponent } from './components/professor/professor.component';
-import { DashboardAlunoComponent } from './components/dashboard-aluno/dashboard-aluno.component';
-import { DashboardTurmaComponent } from './components/dashboard-turma/dashboard-turma.component';
-import { DashboardProfessorComponent } from './components/dashboard-professor/dashboard-professor.component';
-
+import { EditClassComponent } from './components/school/class/edit-class/edit-class.component';
+import { AddClassComponent } from './components/school/class/add-class/add-class.component';
+import { ListClassesComponent } from './components/school/class/list-classes/list-classes.component';
+import { ClassDetailsComponent } from './components/school/class/class-details/class-details.component';
+//
+import { AddSubjectComponent } from './components/school/class/subjects/add-subject/add-subject.component';
+import { EditSubjectComponent } from './components/school/class/subjects/edit-subject/edit-subject.component';
+import { SubjectDetailsComponent } from './components/school/class/subjects/subject-details/subject-details.component';
+import { ListSubjectsComponent } from './components/school/class/subjects/list-subjects/list-subjects.component';
+import { IndexComponent } from './components/index/index.component';
+//
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'index', component: IndexComponent },
   //
-  { path: 'dashboard-aluno', component: DashboardAlunoComponent },
-  { path: 'add-aluno', component: AddAlunoComponent },
-  { path: 'list-alunos', component: ListAlunosComponent },
-  { path: 'edit-aluno/:id', component: EditAlunoComponent },
-  { path: 'aluno/:id', component: AlunoComponent },
+  { path: 'add-school', component: AddSchoolComponent },
+  { path: 'list-schools', component: ListSchoolsComponent },
+  { path: 'edit-school/:id', component: EditSchoolComponent },
+  { path: 'school/:id', component: SchoolDetailsComponent },
   //
-  { path: 'dashboard-turma', component: DashboardTurmaComponent },
-  { path: 'add-turma', component: AddTurmaComponent },
-  { path: 'list-turmas', component: ListTurmasComponent },
-  { path: 'edit-turma/:id', component: EditTurmaComponent },
-  { path: 'turma/:id', component: TurmaComponent },
+  { path: 'add-student', component: AddStudentComponent },
+  { path: 'list-students', component: ListStudentsComponent },
+  { path: 'edit-student/:id', component: EditStudentComponent },
+  { path: 'student-details/:id', component: StudentDetailsComponent },
   //
+  { path: 'add-class', component: AddClassComponent },
+  { path: 'list-classes', component: ListClassesComponent },
+  { path: 'edit-class/:id', component: EditClassComponent },
+  { path: 'class/:id', component: ClassDetailsComponent}, 
+  /*
   { path: 'turma/:id/disciplina/:id', component: DisciplinaComponent },
   { path: 'add-disciplina', component: AddDisciplinaComponent },
   { path: 'turma/:id/edit-disciplina/:id', component: EditDisciplinaComponent },
+  */
   //
-  { path: 'dashboard-professor', component: DashboardProfessorComponent },
-  { path: 'add-professor', component: AddProfessorComponent },
-  { path: 'list-professores', component: ListProfessoresComponent },
-  { path: 'edit-professor/:id', component: EditProfessorComponent },
-  { path: 'professor/:id', component: ProfessorComponent },
+  { path: 'add-teacher', component: AddTeacherComponent },
+  { path: 'list-teachers', component: ListTeachersComponent },
+  { path: 'edit-teacher/:id', component: EditTeacherComponent },
+  { path: 'teacher/:id', component: TeacherDetailsComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    paramsInheritanceStrategy: 'always'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

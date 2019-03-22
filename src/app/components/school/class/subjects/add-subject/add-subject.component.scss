@@ -1,0 +1,15 @@
+@import "../../../../../../assets/scss/form-add.scss";
+
+.btn {
+  margin-top: 10px;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+h3 {
+  font-family: Lato, sans-serif;
+}
+.example-container > * {
+  width: 100%;
+}

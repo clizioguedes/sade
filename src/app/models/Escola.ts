@@ -1,5 +1,5 @@
 // import { HistoricoEscolar } from './Historico';
-export interface Aluno {
+export interface Student {
     id?: string;
     dataCadastro?: Date;
     inep?: string;
@@ -24,66 +24,69 @@ export interface Aluno {
     estado?: string;
     email?: string;
     celular?: string;
-    idTurma?: string;
-    situacao?: string; // Matricula Cancelada, Transferido, Cursando, Esperando Matricula
+    status?: string; // ativo / inativo
 }
 
-export interface Turma {
+export interface Class {
     id?: string;
     dataCadastro?: string;
     nome?: string;
     periodo?: string;
     nivel?: string;
     modalidade?: string;
-    disciplinas?: Disciplina[];
+    disciplinas?: Matter[];
 }
 
-export interface Disciplina {
-    id?: string;
-    idTurma?: string;
-    dataCadastro?: string;
-    nome?: string;
-    professor?: Professor;
+export interface Matter {
+    id?: string; // ok
+    dataCadastro?: string; // ok
+    nome?: string; // ok
+    idTurma?: string; // ok
+    idProfessor?: string; // ok
 }
 
-export interface Professor {
-    id?: string;
-    dataCadastro: string;
-    nomeCompleto?: string;
-    dataNascimento?: string;
-    sexo?: string;
-    naturalidade?: string;
-    ufNaturalidade?: string;
-    rg: string;
-    orgaoEmissorRg?: string;
-    ufRg?: string;
-    dataExpedicaoRg?: string;
-    cpf?: string;
-    nis?: string;
-    sus?: string;
-    endereco?: string;
-    numero?: string;
-    bairro?: string;
-    cidade?: string;
-    estado?: string;
-    email?: string;
-    celular?: string;
-    instituicao?: string;
-    anoFormacao?: number;
-    curso?: string;
-    nivel?: string;
-    turmas?: Turma[];
+export interface Teacher {
+    id?: string; // ok
+    dataCadastro: string; // ok
+    dataEditado: string; // ok
+    nome?: string; // ok
+    dataNascimento?: string; // ok
+    sexo?: string; // ok
+    naturalidade?: string; // ok
+    ufNaturalidade?: string; // ok
+    rg: string; // ok
+    orgaoEmissorRg?: string; // ok
+    ufRg?: string; // ok
+    dataExpedicaoRg?: string; // ok
+    cpf?: string; // ok
+    nis?: string; // ok
+    sus?: string; // ok
+    endereco?: string; // ok
+    numero?: string; // ok
+    bairro?: string; // ok
+    cidade?: string; // ok
+    estado?: string; // ok
+    email?: string; // ok
+    celular?: string; // ok
+    matricula?: string; // ok
+    instituicaoFormacao?: string; // ok
+    anoFormacao?: number; // ok
+    cursoFormacao?: string; // ok
+    nivelFormacao?: string; // ok
+    inep?: string; // ok
 }
 
-export interface Escola {
-    id: string;
-    nome: string;
-    endereco: Endereco;
-    cnpj: string;
-    inep: string;
-    email: string;
-    telefone: string;
-    anoLetivo: number;
+export interface School {
+    id: string; // ok
+    nome?: string; // ok
+    inep?: string; // ok
+    endereco?: string; // ok
+    numero?: string; // ok
+    bairro?: string; // ok
+    cidade?: string; // ok
+    estado?: string; // ok
+    email?: string; // ok
+    telefone?: string; // ok
 }
 
 export interface Documentacao {

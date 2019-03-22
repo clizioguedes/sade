@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppMaterialModule } from './app-material.module';
-import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material';
 import { NgxMaskModule } from 'ngx-mask';
+// import { FlexLayoutModule } from '@angular/flex-layout';
+//
+import { AppMaterialModule } from './app-material.module';
+import { AppRoutingModule } from './app-routing.module';
 //
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -13,39 +15,39 @@ import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { NavComponent } from './components/nav/nav.component';
 //
-import { AddAlunoComponent } from './components/add-aluno/add-aluno.component';
-import { ListAlunosComponent } from './components/list-alunos/list-alunos.component';
-import { EditAlunoComponent } from './components/edit-aluno/edit-aluno.component';
-import { AlunoComponent } from './components/aluno/aluno.component';
-//
-import { AddTurmaComponent } from './components/add-turma/add-turma.component';
-import { ListTurmasComponent } from './components/list-turmas/list-turmas.component';
-import { EditTurmaComponent } from './components/edit-turma/edit-turma.component';
-import { TurmaComponent } from './components/turma/turma.component';
-//
-import { AddDisciplinaComponent } from './components/turma/add-disciplina/add-disciplina.component';
-import { ListDisciplinasComponent } from './components/turma/list-disciplinas/list-disciplinas.component';
-import { EditDisciplinaComponent } from './components/turma/edit-disciplina/edit-disciplina.component';
-import { DisciplinaComponent } from './components/turma/disciplina/disciplina.component';
-//
-import { AddProfessorComponent } from './components/add-professor/add-professor.component';
-import { ListProfessoresComponent } from './components/list-professores/list-professores.component';
-import { EditProfessorComponent } from './components/edit-professor/edit-professor.component';
-import { ProfessorComponent } from './components/professor/professor.component';
-//
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FirestoreSettingsToken } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 //
-import { AlunoService } from './services/aluno.service';
-import { DisciplinaService } from './services/disciplina.service';
-import { ProfessorService } from './services/professor.service';
-import { TurmaService } from './services/turma.service';
+import { FirestoreService } from './services/firestore.service';
 //
-import { DashboardTurmaComponent } from './components/dashboard-turma/dashboard-turma.component';
-import { DashboardAlunoComponent } from './components/dashboard-aluno/dashboard-aluno.component';
-import { DashboardProfessorComponent } from './components/dashboard-professor/dashboard-professor.component';
+import { AddStudentComponent } from './components/student/add-student/add-student.component';
+import { EditStudentComponent } from './components/student/edit-student/edit-student.component';
+import { StudentDetailsComponent } from './components/student/student-details/student-details.component';
+import { ListStudentsComponent } from './components/student/list-students/list-students.component';
+//
+import { EditTeacherComponent } from './components/teacher/edit-teacher/edit-teacher.component';
+import { AddTeacherComponent } from './components/teacher/add-teacher/add-teacher.component';
+import { ListTeachersComponent } from './components/teacher/list-teachers/list-teachers.component';
+import { TeacherDetailsComponent } from './components/teacher/teacher-details/teacher-details.component';
+//
+import { SchoolDetailsComponent } from './components/school/school-details/school-details.component';
+import { ListSchoolsComponent } from './components/school/list-schools/list-schools.component';
+import { AddSchoolComponent } from './components/school/add-school/add-school.component';
+import { EditSchoolComponent } from './components/school/edit-school/edit-school.component';
+//
+import { EditClassComponent } from './components/school/class/edit-class/edit-class.component';
+import { AddClassComponent } from './components/school/class/add-class/add-class.component';
+import { ListClassesComponent } from './components/school/class/list-classes/list-classes.component';
+import { ClassDetailsComponent } from './components/school/class/class-details/class-details.component';
+//
+import { AddSubjectComponent } from './components/school/class/subjects/add-subject/add-subject.component';
+import { EditSubjectComponent } from './components/school/class/subjects/edit-subject/edit-subject.component';
+import { SubjectDetailsComponent } from './components/school/class/subjects/subject-details/subject-details.component';
+import { ListSubjectsComponent } from './components/school/class/subjects/list-subjects/list-subjects.component';
+import { IndexComponent } from './components/index/index.component';
+import { DialogCadastroOkComponent } from './components/school/add-school/dialog-cadastro-ok/dialog-cadastro-ok.component';
 //
 @NgModule({
   declarations: [
@@ -54,25 +56,33 @@ import { DashboardProfessorComponent } from './components/dashboard-professor/da
     AboutComponent,
     ContactComponent,
     HomeComponent,
-    AddAlunoComponent,
-    ListAlunosComponent,
-    EditAlunoComponent,
-    AlunoComponent,
-    AddTurmaComponent,
-    ListTurmasComponent,
-    EditTurmaComponent,
-    TurmaComponent,
-    AddDisciplinaComponent,
-    ListDisciplinasComponent,
-    EditDisciplinaComponent,
-    DisciplinaComponent,
-    AddProfessorComponent,
-    ListProfessoresComponent,
-    EditProfessorComponent,
-    ProfessorComponent,
-    DashboardTurmaComponent,
-    DashboardAlunoComponent,
-    DashboardProfessorComponent,
+    //
+    AddStudentComponent,
+    EditStudentComponent,
+    StudentDetailsComponent,
+    ListStudentsComponent,
+    //
+    EditTeacherComponent,
+    AddTeacherComponent,
+    ListTeachersComponent,
+    TeacherDetailsComponent,
+    //
+    SchoolDetailsComponent,
+    ListSchoolsComponent,
+    AddSchoolComponent,
+    EditSchoolComponent,
+    //
+    EditClassComponent,
+    AddClassComponent,
+    ListClassesComponent,
+    ClassDetailsComponent,
+    //
+    AddSubjectComponent,
+    EditSubjectComponent,
+    SubjectDetailsComponent,
+    ListSubjectsComponent,
+    IndexComponent,
+    DialogCadastroOkComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,20 +95,16 @@ import { DashboardProfessorComponent } from './components/dashboard-professor/da
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     NgxMaskModule.forRoot(),
+    // FlexLayoutModule,
   ],
   providers: [
-    AlunoService,
-    TurmaService,
-    ProfessorService,
-    DisciplinaService,
+    FirestoreService,
     { provide: FirestoreSettingsToken, useValue: {} },
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    HomeComponent,
-    AddDisciplinaComponent,
-    EditTurmaComponent,
+    DialogCadastroOkComponent, // Alert de Cadastro de escola realizado com Sucesso.
   ]
 })
 export class AppModule { }

@@ -1,0 +1,37 @@
+<form *ngIf="editForm" [formGroup]="editForm" (ngSubmit)="onSubmit()" class="form">
+  <h2>Editar Turma</h2>
+  <mat-form-field class="form-element">
+    <mat-label>Nome da Turma</mat-label>
+    <input matInput formControlName="nome">
+  </mat-form-field>
+  <mat-radio-group class="example-radio-group" formControlName="periodo">
+    <mat-label>Periodo:</mat-label>
+    <br>
+    <mat-radio-button class="example-radio-button" name="periodo" value="Matutino">Matutino</mat-radio-button>
+    <mat-radio-button class="example-radio-button" name="periodo" value="Vespertino">Vespertino</mat-radio-button>
+    <mat-radio-button class="example-radio-button" name="periodo" value="Noturno">Noturno</mat-radio-button>
+    <mat-radio-button class="example-radio-button" name="periodo" value="Diurno">Diurno</mat-radio-button>
+  </mat-radio-group>
+  <mat-form-field class="form-element">
+    <mat-label>Nível</mat-label>
+    <mat-select formControlName="nivel" name="nivel">
+      <mat-option value=""> Selecione o Nível </mat-option>
+      <mat-option [value]="nivel" *ngFor="let nivel of niveis"> {{nivel}} </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-radio-group class="example-radio-group" formControlName="modalidade">
+    <mat-label>Modalidade:</mat-label>
+    <br>
+    <mat-radio-button class="example-radio-button" name="modalidade" value="Não se Aplica">Não se Aplica
+    </mat-radio-button>
+    <mat-radio-button class="example-radio-button" name="modalidade" value="Anos Iníciais">Anos Iníciais (1º ao 5º
+      Ano) </mat-radio-button>
+    <mat-radio-button class="example-radio-button" name="modalidade" value="Anos Finais">Anos Finais (6º ao 9º Ano)
+    </mat-radio-button>
+  </mat-radio-group>
+  <mat-divider></mat-divider>
+  <div class="div-add">
+    <button mat-raised-button color="primary" [disabled]="!editForm.valid">Concluir</button>
+  </div>
+</form>

@@ -1,0 +1,24 @@
+<mat-card class="section">
+  <h4>Dados Gerais da Disciplina</h4>
+  <table class="info">
+    <tr>
+      <td>Discipina:</td>
+      <td colspan="5">{{disciplina?.nome}}</td>
+    </tr>
+    <tr>
+      <td>Turma Correspondente:</td>
+      <td colspan="5">{{turma?.nome}}</td>
+    </tr>
+    <tr>
+      <td>Professor Responsável:</td>
+      <td colspan="5"> {{professor?.nome}} </td>
+    </tr>
+  </table>
+  <div class="actions">
+    <button mat-raised-button color="primary" class="action" (click)="teste(2)">
+      Diário</button>
+    <button mat-raised-button color="accent" class="action" (click)="openDialogMatriculaAluno()">
+      Notas</button>
+  </div>
+  <router-outlet></router-outlet>
+</mat-card>

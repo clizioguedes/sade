@@ -1,0 +1,75 @@
+<div class="container">
+  <form [formGroup]="resgisterForm" *ngIf="resgisterForm">
+    <mat-horizontal-stepper #stepper [linear]="true">
+      <mat-step [stepControl]="0">
+        <ng-template matStepLabel>Dados da Escola</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="INEP" mask="00000000" formControlName="inep">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="Nome da Escola" formControlName="nome">
+        </mat-form-field>
+        <div>
+          <button mat-flat-button color="primary" matStepperNext>Avançar</button>
+        </div>
+      </mat-step>
+
+      <mat-step [stepControl]="1">
+        <ng-template matStepLabel>Agora, o Endereço da Escola</ng-template>
+        <h5>Show de Bola, Agora as informações do endereço da Escola</h5>
+        <mat-form-field>
+          <input matInput placeholder="Endereço" formControlName="endereco">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Número" mask="0000" formControlName="numero">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Bairro" formControlName="bairro">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Cidade" formControlName="cidade">
+        </mat-form-field>
+        <mat-form-field class="form-element">
+          <mat-label>UF</mat-label>
+          <mat-select formControlName="uf" name="uf">
+            <mat-option value=""> Selecione o Estado </mat-option>
+            <mat-option value="RN"> RN </mat-option>
+            <mat-option [value]="estado.uf" *ngFor="let estado of estados"> {{estado.uf}} </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button mat-flat-button color="primary" matStepperNext>Avançar</button>
+          <button mat-flat-button color="warn" matStepperPrevious>Voltar</button>
+        </div>
+      </mat-step>
+
+      <mat-step [stepControl]="2">
+        <ng-template matStepLabel>Contato</ng-template>
+        <h5>Agora, o contato da Escola</h5>
+        <mat-form-field>
+          <input matInput type="email" placeholder="E-mail" formControlName="email">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Telefone" mask="(00) 00000-0000" formControlName="telefone">
+          <mat-hint>Apenas Números com DDD</mat-hint>
+        </mat-form-field>
+        <div>
+          <button mat-flat-button color="primary" [disabled]="!resgisterForm.valid" (click)="onSubmit()"
+            matStepperNext>Concluir</button>
+          <button mat-flat-button color="warn" matStepperPrevious>Voltar</button>
+        </div>
+      </mat-step>
+
+      <mat-step [stepControl]="2">
+        <ng-template matStepLabel>Conclusão</ng-template>
+        <div class="reset">
+          <h5>Clique em Reset para Concluir</h5>
+          <div>
+            <button mat-flat-button (click)="stepper.reset()" color="warn" matStepperPrevious>Reset</button>
+          </div>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </form>
+</div>

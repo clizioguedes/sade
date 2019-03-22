@@ -1,0 +1,21 @@
+<div *ngFor="let turma of turmas; let i = index; trackBy: customTrackBy">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{turma.nome}}</mat-card-title>
+        <mat-card-subtitle>{{turma.modalidade}} no Período {{turma.periodo}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button routerLink="/turma/{{turma.id}}" routerLinkActive="router-link-active">
+          <i class="material-icons">info</i>
+          DETALHES
+        </button>
+        <button mat-button id="{{turma.id}}" (click)="deleteTurma($event)">
+          <i class="material-icons">delete</i>
+          EXCLUIR
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
