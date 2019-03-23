@@ -51,7 +51,7 @@
           <input matInput type="email" placeholder="E-mail" formControlName="email">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Telefone" mask="(00) 00000-0000" formControlName="telefone">
+          <input matInput placeholder="Telefone" mask="(00) 00000-0000" [dropSpecialCharacters]="false" formControlName="telefone">
           <mat-hint>Apenas Números com DDD</mat-hint>
         </mat-form-field>
         <div>

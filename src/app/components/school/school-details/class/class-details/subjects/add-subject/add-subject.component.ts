@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FirestoreService } from 'src/app/services/firestore.service';
-import { Teacher } from 'src/app/models/Escola';
+import { FirestoreService } from '../../../../../../../services/firestore.service';
+import { Teacher } from '../../../../../../../models/Escola';
 
 @Component({
   selector: 'app-add-subject',

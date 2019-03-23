@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Class, Student } from 'src/app/models/Escola';
+import { Class, Student } from '../../../../../models/Escola';
 import { MatTableDataSource, MatSort, MatDialogRef, MatDialog } from '@angular/material';
-import { AddSubjectComponent } from '../Subjects/add-subject/add-subject.component';
+import { AddSubjectComponent } from './subjects/add-subject/add-subject.component';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { ActivatedRoute } from '@angular/router';
 import { EditClassComponent } from '../edit-class/edit-class.component';

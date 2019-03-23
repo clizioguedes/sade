@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Teacher } from 'src/app/models/Escola';
+import { Teacher } from '../../../models/Escola';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
-import { FirestoreService } from 'src/app/Services/firestore.service';
+import { FirestoreService } from '../../../services/firestore.service';
 
 @Component({
   selector: 'app-list-teachers',
