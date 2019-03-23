@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Class, Student } from '../../../../../models/Escola';
+import { Class, Student } from '../../../models/Escola';
 import { MatTableDataSource, MatSort, MatDialogRef, MatDialog } from '@angular/material';
 import { AddSubjectComponent } from './subjects/add-subject/add-subject.component';
 import { FirestoreService } from 'src/app/services/firestore.service';
@@ -21,37 +21,21 @@ export class ClassDetailsComponent implements OnInit {
   displayedColumns: string[] = ['inep', 'nome', 'dataDeNascimento', 'situacao'];
   dataSource: MatTableDataSource<Student>;
 
-  disciplinas: Array<any>;
-
   fileNameDialogRefAdd: MatDialogRef<AddSubjectComponent>;
   fileNameDialogRefEdit: MatDialogRef<EditClassComponent>;
-  // fileNameDialogRefEditDisciplina: MatDialogRef<EditSubjectComponent>;
 
   constructor(
     private firestore: FirestoreService,
     private route: ActivatedRoute,
     public dialog: MatDialog,
   ) {
-    this.idTurma = this.route.snapshot.params.id;
-    this.firestore.getClass(this.idTurma).subscribe(turma => {
-      this.turma = turma;
-      if (this.turma.id == null) {
-        this.firestore.addIdClass(this.idTurma);
-      }
-    });
-    this.firestore.getSubjects().subscribe(disciplinas => {
-      this.disciplinas = disciplinas;
-    });
-    /*
-    this.firestore.getAlunosTurma(this.idTurma).subscribe(alunosDaTurma => {
-      this.alunosDaTurma = alunosDaTurma;
-      this.dataSource = new MatTableDataSource(this.alunosDaTurma);
-      this.dataSource.sort = this.sort;
-    });
-    */
   }
 
   ngOnInit() {
+    this.idTurma = this.route.snapshot.params.id;
+    this.firestore.getClass(this.idTurma).subscribe(turma => {
+      this.turma = turma;
+    });
   }
 
   openDialogAddDisciplina() {
@@ -59,16 +43,6 @@ export class ClassDetailsComponent implements OnInit {
       data: this.turma
     });
   }
-
-  /*
-  openDialogMatriculaAluno() {
-    this.fileNameDialogRefMatriculaAluno = this.dialog.open(ListAlunosTurmaComponent, {
-      width: '75%',
-      height: '75%',
-      data: this.turma
-    });
-  }
-  */
 
   openDialogEditTurma() {
     this.fileNameDialogRefEdit = this.dialog.open(EditClassComponent, {

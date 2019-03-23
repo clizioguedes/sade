@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { School } from 'src/app/models/Escola';
 
 @Component({
   selector: 'app-add-class',
@@ -11,6 +13,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 export class AddClassComponent implements OnInit {
 
   registerForm: FormGroup;
+  escola: School;
   submitted = false;
   aviso = 'Este Item é Obrigatório';
 
@@ -25,12 +28,17 @@ export class AddClassComponent implements OnInit {
   constructor(
     private firestore: FirestoreService,
     private router: Router,
-    private formBuilder: FormBuilder
-  ) { }
+    private formBuilder: FormBuilder,
+    public dialogRef: MatDialogRef<AddClassComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: School,
+  ) {
+    this.escola = data;
+  }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       dataCadastro: [new Date()],
+      idEscola: [this.escola.id],
       nome: ['', Validators.required],
       nivel: ['', Validators.required],
       periodo: ['', Validators.required],
@@ -48,6 +56,10 @@ export class AddClassComponent implements OnInit {
       return;
     }
     this.firestore.addClass(formValue);
-    this.router.navigate(['/list-classes']);
+    this.dialogRef.close();
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

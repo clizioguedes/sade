@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirestoreService } from 'src/app/services/firestore.service';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { DialogCadastroOkComponent } from './dialog-cadastro-ok/dialog-cadastro-ok.component';
 
 export interface Estados {
@@ -47,7 +47,7 @@ export class AddSchoolComponent implements OnInit {
   ];
 
   // resgisterFormGroup: FormGroup;
-  resgisterForm: FormGroup;
+  registerForm: FormGroup;
 
   DialogRefCadastroOk: MatDialogRef<DialogCadastroOkComponent>;
 
@@ -58,9 +58,12 @@ export class AddSchoolComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.resgisterForm = this.formBuilder.group({
+    this.registerForm = this.formBuilder.group({
       inep: ['', Validators.required],
       nome: ['', Validators.required],
+      anoLetivo: ['', Validators.required],
+      inicioAnoLetivo: ['', Validators.required],
+      fimAnoLetivo: ['', Validators.required],
       endereco: [''],
       numero: [''],
       bairro: [''],
@@ -71,21 +74,19 @@ export class AddSchoolComponent implements OnInit {
     });
   }
 
-
   onSubmit() {
-    const form = this.resgisterForm.value;
-    if (this.resgisterForm.invalid) {
+    const form = this.registerForm.value;
+    if (this.registerForm.invalid) {
       return;
     }
     this.firestore.addSchool(form);
     this.openDialog();
-    this.resgisterForm.reset();
+    this.registerForm.reset();
   }
 
   openDialog(): void {
     this.DialogRefCadastroOk = this.dialog.open(DialogCadastroOkComponent, {
       width: '400px',
-      data: { }
     });
   }
 }

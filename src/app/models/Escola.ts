@@ -37,6 +37,17 @@ export interface Class {
     disciplinas?: Matter[];
 }
 
+/*
+export interface Calendar {
+    id?: string; // ok
+    idEscola?: string; // ok
+    dataCadastro?: Date; // ok
+    anoLetivo?: string; // ok
+    inicioAnoLetivo?: string; // ok
+    fimAnoLetivo?: string; // ok
+}
+*/
+
 export interface Matter {
     id?: string; // ok
     dataCadastro?: string; // ok

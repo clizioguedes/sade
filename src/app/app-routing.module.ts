@@ -23,17 +23,21 @@ import { AddSchoolComponent } from './components/school/add-school/add-school.co
 import { EditSchoolComponent } from './components/school/edit-school/edit-school.component';
 //
 //
-import { EditClassComponent } from './components/school/school-details/class/edit-class/edit-class.component';
-import { AddClassComponent } from './components/school/school-details/class/add-class/add-class.component';
-import { ListClassesComponent } from './components/school/school-details/class/list-classes/list-classes.component';
-import { ClassDetailsComponent } from './components/school/school-details/class/class-details/class-details.component';
+import { EditClassComponent } from './components/class/edit-class/edit-class.component';
+import { AddClassComponent } from './components/class/add-class/add-class.component';
+// tslint:disable-next-line:max-line-length
+import { ListClassesComponent } from './components/class/list-classes/list-classes.component';
+// tslint:disable-next-line:max-line-length
+import { ClassDetailsComponent } from './components/class/class-details/class-details.component';
 //
-import { AddSubjectComponent } from './components/school/school-details/class/class-details/subjects/add-subject/add-subject.component';
-import { EditSubjectComponent } from './components/school/school-details/class/class-details/subjects/edit-subject/edit-subject.component';
 // tslint:disable-next-line:max-line-length
-import { SubjectDetailsComponent } from './components/school/school-details/class/class-details/subjects/subject-details/subject-details.component';
+import { AddSubjectComponent } from './components/class/class-details/subjects/add-subject/add-subject.component';
 // tslint:disable-next-line:max-line-length
-import { ListSubjectsComponent } from './components/school/school-details/class/class-details/subjects/list-subjects/list-subjects.component';
+import { EditSubjectComponent } from './components/class/class-details/subjects/edit-subject/edit-subject.component';
+// tslint:disable-next-line:max-line-length
+import { SubjectDetailsComponent } from './components/class/class-details/subjects/subject-details/subject-details.component';
+// tslint:disable-next-line:max-line-length
+import { ListSubjectsComponent } from './components/class/class-details/subjects/list-subjects/list-subjects.component';
 //
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -47,15 +51,16 @@ const routes: Routes = [
   { path: 'edit-school/:id', component: EditSchoolComponent },
   { path: 'school-details/:id', component: SchoolDetailsComponent },
   //
+  { path: 'add-class', component: AddClassComponent },
+  { path: 'list-classes', component: ListClassesComponent },
+  { path: 'edit-class/:id', component: EditClassComponent },
+  { path: 'class-details/:id', component: ClassDetailsComponent },
+  //
   { path: 'add-student', component: AddStudentComponent },
   { path: 'list-students', component: ListStudentsComponent },
   { path: 'edit-student/:id', component: EditStudentComponent },
   { path: 'student-details/:id', component: StudentDetailsComponent },
   //
-  { path: 'add-class', component: AddClassComponent },
-  { path: 'list-classes', component: ListClassesComponent },
-  { path: 'edit-class/:id', component: EditClassComponent },
-  { path: 'class/:id', component: ClassDetailsComponent },
   /*
   { path: 'turma/:id/disciplina/:id', component: DisciplinaComponent },
   { path: 'add-disciplina', component: AddDisciplinaComponent },

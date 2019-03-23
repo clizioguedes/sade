@@ -37,17 +37,21 @@ import { ListSchoolsComponent } from './components/school/list-schools/list-scho
 import { AddSchoolComponent } from './components/school/add-school/add-school.component';
 import { EditSchoolComponent } from './components/school/edit-school/edit-school.component';
 //
-import { EditClassComponent } from './components/school/school-details/class/edit-class/edit-class.component';
-import { AddClassComponent } from './components/school/school-details/class/add-class/add-class.component';
-import { ListClassesComponent } from './components/school/school-details/class/list-classes/list-classes.component';
-import { ClassDetailsComponent } from './components/school/school-details/class/class-details/class-details.component';
+import { EditClassComponent } from './components/class/edit-class/edit-class.component';
+import { AddClassComponent } from './components/class/add-class/add-class.component';
+// tslint:disable-next-line:max-line-length
+import { ListClassesComponent } from './components/class/list-classes/list-classes.component';
+// tslint:disable-next-line:max-line-length
+import { ClassDetailsComponent } from './components/class/class-details/class-details.component';
 //
-import { AddSubjectComponent } from './components/school/school-details/class/class-details/subjects/add-subject/add-subject.component';
-import { EditSubjectComponent } from './components/school/school-details/class/class-details/subjects/edit-subject/edit-subject.component';
 // tslint:disable-next-line:max-line-length
-import { SubjectDetailsComponent } from './components/school/school-details/class/class-details/subjects/subject-details/subject-details.component';
+import { AddSubjectComponent } from './components/class/class-details/subjects/add-subject/add-subject.component';
 // tslint:disable-next-line:max-line-length
-import { ListSubjectsComponent } from './components/school/school-details/class/class-details/subjects/list-subjects/list-subjects.component';
+import { EditSubjectComponent } from './components/class/class-details/subjects/edit-subject/edit-subject.component';
+// tslint:disable-next-line:max-line-length
+import { SubjectDetailsComponent } from './components/class/class-details/subjects/subject-details/subject-details.component';
+// tslint:disable-next-line:max-line-length
+import { ListSubjectsComponent } from './components/class/class-details/subjects/list-subjects/list-subjects.component';
 import { IndexComponent } from './components/index/index.component';
 import { DialogCadastroOkComponent } from './components/school/add-school/dialog-cadastro-ok/dialog-cadastro-ok.component';
 //

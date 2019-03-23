@@ -1,3 +1,29 @@
-<p>
-  school-details works!
-</p>
+<mat-card class="section">
+  <h4>Dados da Escola</h4>
+  <table class="info">
+    <tr>
+      <td>INEP</td>
+      <td colspan="5">{{escola?.inep}}</td>
+    </tr>
+    <tr>
+      <td>Nome</td>
+      <td colspan="5"> {{escola?.nome}} </td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td colspan="5"> {{escola?.email}}</td>
+    </tr>
+    <tr>
+      <td>Telefone</td>
+      <td colspan="5"> {{escola?.telefone}} </td>
+    </tr>
+  </table>
+  <div class="actions">
+    <button mat-raised-button color="primary" class="action" (click)="openDialogAddClass()">Cadastrar
+      Turma</button>
+    <button mat-raised-button color="warn" class="action" (click)="openDialogEditTurma()"><i
+        class="material-icons">edit</i>Editar
+      Escola</button>
+  </div>
+</mat-card>
+<app-list-classes></app-list-classes>

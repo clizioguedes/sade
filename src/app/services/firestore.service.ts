@@ -39,12 +39,6 @@ export class FirestoreService {
   schoolDocument: AngularFirestoreDocument<School>;
   school: Observable<School>;
 
-  calendariosLetivosCollection: AngularFirestoreCollection<any>;
-  calendarios: Observable<any[]>;
-
-  anoLetivoDocument: AngularFirestoreDocument<any>;
-  anoLetivo: Observable<any[]>;
-
   constructor(private firestore: AngularFirestore) { }
 
   // ESCOLAS
@@ -66,8 +60,8 @@ export class FirestoreService {
     this.schoolsCollection.add(school);
   }
 
-  getSchool(idSchool: any) {
-    this.schoolDocument = this.firestore.doc(idSchool);
+  getSchool(idSchool: string) {
+    this.schoolDocument = this.firestore.collection('/schools/').doc(idSchool);
     this.school = this.schoolDocument.valueChanges();
     return this.school;
   }
@@ -81,53 +75,14 @@ export class FirestoreService {
     this.schoolDocument.delete();
   }
 
-  addIdSchool(idSchool: any) {
+  addIdSchool(idSchool: string) {
     this.schoolDocument.update({ id: idSchool });
     console.log('ID da ESCOLA foi Adicionado com Sucesso');
   }
 
-  // CALENDARIOS LETIVOS
-  getCalendariosLetivos() {
-    this.calendariosLetivosCollection = this.schoolDocument.collection('calendarios');
-    this.calendarios = this.calendariosLetivosCollection
-      .snapshotChanges().pipe(
-        map(changes => {
-          return changes.map(a => {
-            const data = a.payload.doc.data() as any;
-            data.id = a.payload.doc.id;
-            return data;
-          });
-        }));
-    return this.calendarios;
-  }
-
-  AddCalendarioLetivo(calendario: any) {
-    this.calendariosLetivosCollection.add(calendario);
-  }
-
-  getCalendarioLetivo(idCalendarioLetivo: any) {
-    this.anoLetivoDocument = this.schoolsCollection.doc(idCalendarioLetivo);
-    this.anoLetivo = this.anoLetivoDocument.valueChanges();
-    return this.anoLetivo;
-  }
-
-  updateCalendarioLetivo(calendario: School) {
-    this.anoLetivoDocument.update(calendario);
-  }
-
-  deleteCalendarioLetivo(idCalendarioLetivo: string) {
-    this.anoLetivoDocument = this.schoolsCollection.doc(idCalendarioLetivo);
-    this.anoLetivoDocument.delete();
-  }
-
-  addIdCalendarioLetivo(idCalendarioLetivo: any) {
-    this.anoLetivoDocument.update({ id: idCalendarioLetivo });
-    console.log('ID do ANO LETIVO foi Adicionado com Sucesso');
-  }
-
   // TURMAS
   getClasses() {
-    this.classesCollection = this.anoLetivoDocument.collection('classes/');
+    this.classesCollection = this.schoolDocument.collection('classes/');
     this.classes = this.classesCollection
       .snapshotChanges().pipe(
         map(changes => {
@@ -141,16 +96,16 @@ export class FirestoreService {
   }
 
   addClass(classe: Class) {
-    this.anoLetivoDocument.collection('classes').add(classe);
+    this.schoolDocument.collection('classes').add(classe);
   }
 
-  getClass(idClass: any) {
-    this.classDocument = this.anoLetivoDocument.collection('classes').doc(idClass);
+  getClass(idClass: string) {
+    this.classDocument = this.classesCollection.doc<Class>(idClass);
     this.class = this.classDocument.valueChanges();
     return this.class;
   }
 
-  updateClass(classe: any) {
+  updateClass(classe: Class) {
     this.classDocument.update(classe);
   }
 
@@ -159,7 +114,7 @@ export class FirestoreService {
     this.classDocument.delete();
   }
 
-  addIdClass(idClass: any) {
+  addIdClass(idClass: string) {
     this.classDocument.update({ id: idClass });
     console.log('ID da TURMA foi Adicionado com Sucesso');
   }
@@ -197,14 +152,6 @@ export class FirestoreService {
     this.subjectDocument = this.subjectsCollection.doc(`${subject.id}`);
     this.subjectDocument.delete();
   }
-
-  /*
-  matricularAluno(idStudent: string, idClass: string) {
-    this.firestore.doc('/alunos/' + idStudent).update(
-      { idTurma: idClass, situacao: 'Matriculado', status: 'Cursando' }
-    );
-  }
-  */
 
   // PROFESSORES
   getTeachers() {

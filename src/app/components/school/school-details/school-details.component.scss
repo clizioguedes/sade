@@ -1,0 +1,17 @@
+@import "../../../../assets/scss/individual";
+.section {
+  margin: 10px;
+  .table-alunos td {
+    text-align: center;
+  }
+  .actions {
+    margin: 0 auto;
+    .action {
+      margin: 10px;
+    }
+  }
+  .btn-action-aluno {
+    margin: 5px;
+  }
+
+}
