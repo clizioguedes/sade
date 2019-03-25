@@ -1,6 +1,5 @@
 <form *ngIf="editForm" [formGroup]="editForm" (ngSubmit)="onSubmit()" class="form">
-  <h2>Editar Turma</h2>
-  <mat-form-field class="form-element">
+  <mat-form-field class="form-element" appearance="outline">
     <mat-label>Nome da Turma</mat-label>
     <input matInput formControlName="nome">
   </mat-form-field>
@@ -12,10 +11,10 @@
     <mat-radio-button class="example-radio-button" name="periodo" value="Noturno">Noturno</mat-radio-button>
     <mat-radio-button class="example-radio-button" name="periodo" value="Diurno">Diurno</mat-radio-button>
   </mat-radio-group>
-  <mat-form-field class="form-element">
+
+  <mat-form-field class="form-element" appearance="outline">
     <mat-label>Nível</mat-label>
     <mat-select formControlName="nivel" name="nivel">
-      <mat-option value=""> Selecione o Nível </mat-option>
       <mat-option [value]="nivel" *ngFor="let nivel of niveis"> {{nivel}} </mat-option>
     </mat-select>
   </mat-form-field>

@@ -61,7 +61,7 @@ export class FirestoreService {
   }
 
   getSchool(idSchool: string) {
-    this.schoolDocument = this.firestore.collection('/schools/').doc(idSchool);
+    this.schoolDocument = this.firestore.collection<School>('/schools/').doc(idSchool);
     this.school = this.schoolDocument.valueChanges();
     return this.school;
   }
@@ -105,7 +105,7 @@ export class FirestoreService {
     return this.class;
   }
 
-  updateClass(classe: Class) {
+  updateClass(classe: any) {
     this.classDocument.update(classe);
   }
 
@@ -120,8 +120,8 @@ export class FirestoreService {
   }
 
   // DISCIPLINAS
-  getSubjects() {
-    this.subjectsCollection = this.classDocument.collection('subjects');
+  getSubjects(idTurma: any) {
+    this.subjectsCollection = this.classDocument.collection('subjects', ref => ref.where('idTurma', '==', idTurma));
     this.subjects = this.subjectsCollection
       .snapshotChanges().pipe(
         map(changes => {
@@ -135,7 +135,7 @@ export class FirestoreService {
   }
 
   addSubject(subject: any) {
-    this.subjectsCollection.add(subject);
+    this.classDocument.collection('subjects').add(subject);
   }
 
   getSubject(idSubject: string) {
@@ -155,7 +155,7 @@ export class FirestoreService {
 
   // PROFESSORES
   getTeachers() {
-    this.teachersCollection = this.firestore.collection('teachers/');
+    this.teachersCollection = this.firestore.collection('professores/');
     this.teachers = this.teachersCollection
       .snapshotChanges().pipe(
         map(changes => {
@@ -173,7 +173,7 @@ export class FirestoreService {
   }
 
   getTeacher(TeacherId: any) {
-    this.teacherDocument = this.teachersCollection.doc(TeacherId);
+    this.teacherDocument = this.firestore.collection('professores/').doc(TeacherId);
     this.teacher = this.teacherDocument.valueChanges();
     return this.teacher;
   }
@@ -194,7 +194,21 @@ export class FirestoreService {
 
   // ALUNOS
   getStudents() {
-    this.studentsCollection = this.firestore.collection('students/', ref => ref.orderBy('nome'));
+    this.studentsCollection = this.firestore.collection('alunos/', ref => ref.orderBy('nome'));
+    this.students = this.studentsCollection
+      .snapshotChanges().pipe(
+        map(changes => {
+          return changes.map(a => {
+            const data = a.payload.doc.data() as Student;
+            data.id = a.payload.doc.id;
+            return data;
+          });
+        }));
+    return this.students;
+  }
+
+  getStudentsClass(idTurma: string) {
+    this.studentsCollection = this.firestore.collection('alunos', ref => ref.where('idTurma', '==', idTurma));
     this.students = this.studentsCollection
       .snapshotChanges().pipe(
         map(changes => {
@@ -229,5 +243,10 @@ export class FirestoreService {
   addIdStudent(idstudent: string) {
     this.studentDocument.update({ id: idstudent });
     console.log('ID do ALUNO foi Adicionado com Sucesso');
+  }
+
+  matriculaAluno(idAluno: string, turma: string) {
+    this.studentDocument = this.studentsCollection.doc(idAluno);
+    this.studentDocument.update({ idTurma: turma });
   }
 }

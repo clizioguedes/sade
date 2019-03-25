@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { ActivatedRoute } from '@angular/router';
-import { Class } from 'src/app/models/Escola';
+import { Class, School } from 'src/app/models/Escola';
 import { AddClassComponent } from '../../class/add-class/add-class.component';
+import { EditSchoolComponent } from '../edit-school/edit-school.component';
 
 @Component({
   selector: 'app-school-details',
@@ -13,8 +14,8 @@ import { AddClassComponent } from '../../class/add-class/add-class.component';
 export class SchoolDetailsComponent implements OnInit {
 
   idEscola: string;
-  escola: any;
-  turmas: any;
+  escola: School;
+  turmas: Class[];
 
   constructor(
     private firestore: FirestoreService,
@@ -38,6 +39,12 @@ export class SchoolDetailsComponent implements OnInit {
 
   openDialogAddClass(): void {
     const dialogRef = this.dialog.open(AddClassComponent, {
+      data: this.escola
+    });
+  }
+
+  openDialogEditSchool(): void {
+    const dialogRef = this.dialog.open(EditSchoolComponent, {
       data: this.escola
     });
   }

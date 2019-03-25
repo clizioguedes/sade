@@ -1,3 +1,101 @@
-<p>
-  edit-school works!
-</p>
+<form [formGroup]="editForm" *ngIf="editForm">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>INEP</mat-label>
+          <input matInput placeholder="INEP" mask="00000000" formControlName="inep">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Nome da Instituição de Ensino</mat-label>
+          <input matInput placeholder="Nome da Escola" formControlName="nome">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Ano Letivo</mat-label>
+          <input matInput placeholder="Ano Letivo" mask="0000" formControlName="anoLetivo">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Inicio do Ano Letivo</mat-label>
+          <input matInput [matDatepicker]="inicioAnoLetivo" formControlName="inicioAnoLetivo">
+          <mat-datepicker-toggle matSuffix [for]="inicioAnoLetivo"></mat-datepicker-toggle>
+          <mat-datepicker #inicioAnoLetivo></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Fim do Ano Letivo</mat-label>
+          <input matInput [matDatepicker]="fimAnoLetivo" formControlName="fimAnoLetivo">
+          <mat-datepicker-toggle matSuffix [for]="fimAnoLetivo"></mat-datepicker-toggle>
+          <mat-datepicker #fimAnoLetivo></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-9">
+        <mat-form-field appearance="outline">
+          <mat-label>Endereço</mat-label>
+          <input matInput placeholder="Ex: Rua das Flores" formControlName="endereco">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Número</mat-label>
+          <input matInput placeholder="Ex: 110" mask="0000" formControlName="numero">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Bairro</mat-label>
+          <input matInput placeholder="Ex: Seridó" formControlName="bairro">
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Cidade</mat-label>
+          <input matInput placeholder="Ex: Cerro Corá" formControlName="cidade">
+        </mat-form-field>
+      </div>
+
+      <div class="col-4">
+        <mat-form-field appearance="outline">
+          <mat-label>UF</mat-label>
+          <mat-select formControlName="uf" name="uf">
+            <mat-option [value]="estado" *ngFor="let estado of estados"> {{estado}} </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field appearance="outline">
+          <mat-label>E-mail</mat-label>
+          <input matInput type="email" placeholder="exemplo@mail.com" formControlName="email">
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Contato</mat-label>
+          <input matInput placeholder="Telefone" mask="(00) 00000-0000" [dropSpecialCharacters]="false"
+            formControlName="telefone">
+          <mat-hint>Apenas Números com DDD</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+    <button mat-flat-button (click)="onSubmit()" [disabled]="!editForm" color="primary">Concluir</button>
+    <button mat-flat-button (click)="onNoSubmit()" color="warn">Cancelar</button>
+  </div>
+</form>

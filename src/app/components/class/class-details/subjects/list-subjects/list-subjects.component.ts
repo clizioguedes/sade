@@ -17,9 +17,12 @@ export class ListSubjectsComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
+    /*
     const id = this.route.snapshot.params.id;
     this.firestore.getSubjects().subscribe( disciplinas => {
       this.disciplinas = disciplinas;
     });
+  }
+  */
   }
 }

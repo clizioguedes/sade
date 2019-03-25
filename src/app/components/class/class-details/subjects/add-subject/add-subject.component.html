@@ -8,11 +8,10 @@
     </mat-form-field>
     <mat-form-field>
       <mat-select placeholder="Professor Responsavel" formControlName="idProfessor">
-        <mat-option *ngFor="let professor of professores" [value]="professor.id">{{professor.nome}}
+        <mat-option *ngFor="let teacher of teachers" [value]="teacher.id">{{teacher.nome}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <button mat-raised-button color="primary">Cadastrar Disciplina</button>
-    <button mat-raised-button color="warn" class="btn" (click)="onNoSubmit()">Cancelar</button>
   </div>
 </form>

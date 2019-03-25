@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { Class } from 'src/app/models/Escola';
 
 @Component({
   selector: 'app-edit-class',
@@ -11,6 +12,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 export class EditClassComponent implements OnInit {
 
   idClass: string;
+  turma: Class;
   editForm: FormGroup;
   submitted = false;
   aviso = 'Este Item é Obrigatório';
@@ -30,13 +32,13 @@ export class EditClassComponent implements OnInit {
   ) {
     this.idClass = data.id;
     this.firestore.getClass(this.idClass).subscribe(turma => {
+      this.turma = turma;
       this.editForm = this.formBuilder.group({
-        dataCadastro: [turma.dataCadastro],
-        dataEdicao: [new Date()],
-        nome: [turma.nome, Validators.required],
-        periodo: [turma.periodo, Validators.required],
-        nivel: [turma.nivel, Validators.required],
-        modalidade: [turma.modalidade],
+        dataEditado: [new Date()],
+        nome: [this.turma.nome, Validators.required],
+        periodo: [this.turma.periodo, Validators.required],
+        nivel: [this.turma.nivel, Validators.required],
+        modalidade: [this.turma.modalidade],
       });
     });
   }

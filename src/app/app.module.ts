@@ -53,7 +53,10 @@ import { SubjectDetailsComponent } from './components/class/class-details/subjec
 // tslint:disable-next-line:max-line-length
 import { ListSubjectsComponent } from './components/class/class-details/subjects/list-subjects/list-subjects.component';
 import { IndexComponent } from './components/index/index.component';
+//
 import { DialogCadastroOkComponent } from './components/school/add-school/dialog-cadastro-ok/dialog-cadastro-ok.component';
+//
+import { MatriculaAlunoComponent } from './components/class/class-details/matricula-aluno/matricula-aluno.component';
 //
 @NgModule({
   declarations: [
@@ -89,6 +92,7 @@ import { DialogCadastroOkComponent } from './components/school/add-school/dialog
     ListSubjectsComponent,
     IndexComponent,
     DialogCadastroOkComponent,
+    MatriculaAlunoComponent,
   ],
   imports: [
     BrowserModule,
@@ -111,6 +115,9 @@ import { DialogCadastroOkComponent } from './components/school/add-school/dialog
   bootstrap: [AppComponent],
   entryComponents: [
     DialogCadastroOkComponent, // Alert de Cadastro de escola realizado com Sucesso.
+    AddSubjectComponent,
+    EditClassComponent,
+    MatriculaAlunoComponent
   ]
 })
 export class AppModule { }

@@ -55,17 +55,14 @@ const routes: Routes = [
   { path: 'list-classes', component: ListClassesComponent },
   { path: 'edit-class/:id', component: EditClassComponent },
   { path: 'class-details/:id', component: ClassDetailsComponent },
+  { path: 'subject-details/:id', component: SubjectDetailsComponent },
+  { path: 'add-disciplina', component: AddSubjectComponent },
+  { path: 'edit-subject/:id', component: EditSubjectComponent },
   //
   { path: 'add-student', component: AddStudentComponent },
   { path: 'list-students', component: ListStudentsComponent },
   { path: 'edit-student/:id', component: EditStudentComponent },
   { path: 'student-details/:id', component: StudentDetailsComponent },
-  //
-  /*
-  { path: 'turma/:id/disciplina/:id', component: DisciplinaComponent },
-  { path: 'add-disciplina', component: AddDisciplinaComponent },
-  { path: 'turma/:id/edit-disciplina/:id', component: EditDisciplinaComponent },
-  */
   //
   { path: 'add-teacher', component: AddTeacherComponent },
   { path: 'list-teachers', component: ListTeachersComponent },

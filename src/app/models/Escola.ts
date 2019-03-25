@@ -25,11 +25,13 @@ export interface Student {
     email?: string;
     celular?: string;
     status?: string; // ativo / inativo
+    idTurma?: string;
 }
 
 export interface Class {
     id?: string;
     dataCadastro?: string;
+    dataEditado?: string;
     nome?: string;
     periodo?: string;
     nivel?: string;
@@ -91,6 +93,9 @@ export interface School {
     id: string; // ok
     nome?: string; // ok
     inep?: string; // ok
+    anoLetivo?: string; // ok
+    inicioAnoLetivo?: Date; // ok
+    fimAnoLetivo?: Date; // ok
     endereco?: string; // ok
     numero?: string; // ok
     bairro?: string; // ok
