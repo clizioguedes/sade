@@ -1,0 +1,18 @@
+.example-card {
+  text-decoration: none;
+  a:link {
+    text-decoration: none;
+  }
+  margin: 10px;
+  max-width: 300px;
+  max-height: 400px;
+  background-color: #6200ee;
+  .color {
+    color: #ffffff;
+  }
+  mat-card-content {
+    p {
+      font-size: 10pt;
+    }
+  }
+}

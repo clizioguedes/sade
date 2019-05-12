@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-nav',
@@ -8,7 +8,7 @@ import { MatSidenav } from '@angular/material';
 })
 export class NavComponent implements OnInit {
 
-  @ViewChild('sidenav') sidenav: MatSidenav;
+  @ViewChild('sidenav', { static: false }) sidenav: MatSidenav;
 
   close() {
     this.sidenav.close();

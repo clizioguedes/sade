@@ -1,0 +1,25 @@
+@import '../../../../assets/scss/form-add.scss';
+.btn {
+  margin: 7px;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+h3 {
+  font-family: Lato, sans-serif;
+}
+.example-container > * {
+  width: 100%;
+}
+.example-radio-button {
+  display: flex;
+  flex-direction: column;
+}
+mat-divider {
+  margin: 10px;
+}
+.div-add {
+  margin: 0 auto;
+  text-align: center;
+}
