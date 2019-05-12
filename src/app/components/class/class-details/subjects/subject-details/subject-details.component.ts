@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Matter, Class, Teacher, Student } from 'src/app/models/Escola';
 import { FirestoreService } from 'src/app/services/firestore.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-subject-details',
@@ -22,12 +22,16 @@ export class SubjectDetailsComponent implements OnInit {
 
   alunosMatriculados: Array<Student>;
 
+  registerFormFrequencia: FormGroup;
+  submitted = false;
+  aviso = 'Este Item é Obrigatório';
+
   date = new FormControl(new Date());
   constructor(
     private firestore: FirestoreService,
-    private route: ActivatedRoute) { }
-
-  ngOnInit() {
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder
+  ) {
     const idDisciplina = this.route.snapshot.params.id;
     console.log(idDisciplina);
     this.firestore.getSubject(idDisciplina).subscribe(disciplina => {
@@ -43,9 +47,38 @@ export class SubjectDetailsComponent implements OnInit {
         this.professor = professor;
       });
 
-      this.firestore.getStudentsClass(this.idTurma).subscribe(alunosMatriculados => {
+      this.firestore.getStudentsClass().subscribe(alunosMatriculados => {
         this.alunosMatriculados = alunosMatriculados;
       });
     });
+  }
+
+  ngOnInit() {
+    this.registerFormFrequencia = this.formBuilder.group({
+      dataCadastro: [new Date()],
+      dataFrequencia: ['', Validators.required],
+      quantidade: ['', Validators.required],
+      idMatricula: [''],
+      disciplina: [''],
+    });
+  }
+
+  get f() { return this.registerFormFrequencia.controls; }
+
+  customTrackBy(index: number, freq: any): any {
+    return index;
+  }
+
+  cadastrarFrequencia(matriculaId: string, disciplina: string) {
+    this.registerFormFrequencia.value.idMatricula = matriculaId;
+    this.registerFormFrequencia.value.disciplina = disciplina;
+    const formValue = this.registerFormFrequencia.value;
+    // stop here if form is invalid
+    if (this.registerFormFrequencia.invalid) {
+      return;
+    }
+    const matricula = matriculaId;
+    this.firestore.cadastrarFrequencia(matricula, formValue);
+    this.submitted = true;
   }
 }

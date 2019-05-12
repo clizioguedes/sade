@@ -39,17 +39,6 @@ export interface Class {
     disciplinas?: Matter[];
 }
 
-/*
-export interface Calendar {
-    id?: string; // ok
-    idEscola?: string; // ok
-    dataCadastro?: Date; // ok
-    anoLetivo?: string; // ok
-    inicioAnoLetivo?: string; // ok
-    fimAnoLetivo?: string; // ok
-}
-*/
-
 export interface Matter {
     id?: string; // ok
     dataCadastro?: string; // ok
@@ -118,19 +107,23 @@ export interface Documentacao {
 }
 
 export interface Boletim {
-    dataCadastro?: string;
     id?: string;
-    nota1?: number;
-    nota2?: number;
-    nota3?: number;
-    media?: number;
+    idEscola?: string;
+    idTurma?: string;
+    frequencia?: number;
+    m1?: number;
+    m2?: number;
+    m3?: number;
+    m4?: number;
+    mf?: number;
+    rec?: number;
+    totalFaltas?: number;
 }
 
-export interface Faltas {
+export interface Diario {
     dataCadastro?: string;
     data?: string;
     quantidade?: number;
-    total?: number;
 }
 
 export interface Endereco {

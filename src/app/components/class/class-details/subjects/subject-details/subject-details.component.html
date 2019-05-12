@@ -7,7 +7,7 @@
         </tr>
         <tr>
             <td>Disciplina</td>
-            <td colspan="5"> {{disciplina?.nome}} </td>
+            <td colspan="5"> {{disciplina?.idDisciplina}} </td>
         </tr>
         <tr>
             <td>Professor(a)</td>
@@ -18,32 +18,37 @@
 
 <mat-tab-group>
     <mat-tab label="Frequência">
-        <div class="datepicker">
-            <mat-form-field>
-                <input matInput [matDatepicker]="picker1" placeholder="Data" [formControl]="date">
-                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                <mat-datepicker #picker1></mat-datepicker>
-            </mat-form-field>
-        </div>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">NOME</th>
-                    <th scope="col">FALTAS</th>
-                    <th scope="col">AÇÃO</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="table-active" *ngFor="let aluno of alunosMatriculados">
-                    <td>{{aluno.nome}}</td>
-                    <td>
-                        <input type="number" class="form-control input-notas" placeholder="Ex: 2" id="falta">
-                    </td>
-                    <td>
-                        <button mat-raised-button color="accent">Confirmar</button>
-                    </td>
-                </tr>
-        </table>
+        <form [formGroup]="registerFormFrequencia" class="form">
+            <div class="datepicker">
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker1" placeholder="Data" formControlName="dataFrequencia"
+                        formControlName="dataFrequencia">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">NOME</th>
+                        <th scope="col">QUANTIDADE</th>
+                        <th scope="col">AÇÃO</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let aluno of alunosMatriculados; let i = index; trackBy: customTrackBy">
+                    <tr class="table-active">
+                        <td>{{aluno.nome}}</td>
+                        <td>
+                            <input type=" number" class="form-control input-notas" placeholder="Ex: 2"
+                                formControlName="quantidade" id="falta">
+                        </td>
+                        <td>
+                            <button mat-raised-button color="accent"
+                                (click)="cadastrarFrequencia(aluno.id, disciplina.nome)">Confirmar</button>
+                        </td>
+                    </tr>
+            </table>
+        </form>
     </mat-tab>
     <mat-tab label="1º Bimestre">
         <table class="table table-hover">

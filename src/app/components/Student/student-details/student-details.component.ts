@@ -11,8 +11,9 @@ import { MatDialog } from '@angular/material';
 })
 export class StudentDetailsComponent implements OnInit {
 
-  id: any;
+  id: string;
   student: Student;
+  idStudent: string;
 
   constructor(
     private firestore: FirestoreService,
@@ -20,12 +21,9 @@ export class StudentDetailsComponent implements OnInit {
     private route: ActivatedRoute,
   ) {
     this.id = this.route.snapshot.params.id;
+    console.log(this.id);
     this.firestore.getStudent(this.id).subscribe(student => {
       this.student = student;
-      // CASO O ALUNO NÃO POSSUA ID
-      if (this.student.id == null) {
-        this.firestore.addIdStudent(this.id);
-      }
     });
   }
 

@@ -27,6 +27,12 @@ export class FirestoreService {
   studentDocument: AngularFirestoreDocument<Student>;
   student: Observable<Student>;
 
+  studentsClassCollection: AngularFirestoreCollection<Student>;
+  studentsClass: Observable<Student[]>;
+
+  studentClassDocument: AngularFirestoreDocument<Student>;
+  studentClass: Observable<Student>;
+
   teachersCollection: AngularFirestoreCollection<Teacher>;
   teachers: Observable<Teacher[]>;
 
@@ -38,6 +44,12 @@ export class FirestoreService {
 
   schoolDocument: AngularFirestoreDocument<School>;
   school: Observable<School>;
+
+  historicosCollection: AngularFirestoreCollection<any>;
+  historicos: Observable<any[]>;
+
+  historicoDocument: AngularFirestoreDocument<any>;
+  historico: Observable<any>;
 
   constructor(private firestore: AngularFirestore) { }
 
@@ -207,8 +219,8 @@ export class FirestoreService {
     return this.students;
   }
 
-  getStudentsClass(idTurma: string) {
-    this.studentsCollection = this.firestore.collection('alunos', ref => ref.where('idTurma', '==', idTurma));
+  getStudentsNoMatriculados() {
+    this.studentsCollection = this.firestore.collection('alunos/', ref => ref.where('idTurma', '==', null).orderBy('nome'));
     this.students = this.studentsCollection
       .snapshotChanges().pipe(
         map(changes => {
@@ -221,12 +233,26 @@ export class FirestoreService {
     return this.students;
   }
 
+  getStudentsClass() {
+    this.studentsClassCollection = this.classDocument.collection('matriculados');
+    this.studentsClass = this.studentsClassCollection
+      .snapshotChanges().pipe(
+        map(changes => {
+          return changes.map(a => {
+            const data = a.payload.doc.data() as any;
+            data.id = a.payload.doc.id;
+            return data;
+          });
+        }));
+    return this.studentsClass;
+  }
+
   addStudent(student: any) {
     this.studentsCollection.add(student);
   }
 
   getStudent(studentId: any) {
-    this.studentDocument = this.studentsCollection.doc(studentId);
+    this.studentDocument = this.firestore.collection('alunos').doc(studentId);
     this.student = this.studentDocument.valueChanges();
     return this.student;
   }
@@ -245,8 +271,50 @@ export class FirestoreService {
     console.log('ID do ALUNO foi Adicionado com Sucesso');
   }
 
-  matriculaAluno(idAluno: string, turma: string) {
+  // FUNCOES ADMINISTRATIVAS
+  matriculaAluno(idAluno: string, idTurmaAtual: string, matricula: any): void {
+    this.classDocument.collection('matriculados').add(matricula);
+    /*
+    this.studentsCollection = this.firestore.collection('alunos', ref => ref.orderBy('nome'));
     this.studentDocument = this.studentsCollection.doc(idAluno);
-    this.studentDocument.update({ idTurma: turma });
+    this.studentDocument.collection('historicos').add(diario);
+    */
+    this.firestore.collection('alunos').doc(idAluno).update({ idTurma: idTurmaAtual });
+  }
+
+  cancelaMatricula(docMatriculaId: string, idAluno: string) {
+    this.classDocument.collection('matriculados').doc(docMatriculaId).delete();
+    this.studentDocument = this.firestore.collection('alunos').doc(idAluno);
+    this.studentDocument.update({ idTurma: null });
+  }
+
+  cadastrarFrequencia(matricula: string, diario: any) {
+    this.classDocument.collection('matriculados').doc(matricula).collection('frequencia').add(diario);
+  }
+
+  /*
+  getHistoricos() {
+    this.historicosCollection = this.studentDocument.collection('historicos');
+    this.historicos = this.historicosCollection
+      .snapshotChanges().pipe(
+        map(changes => {
+          return changes.map(a => {
+            const data = a.payload.doc.data() as any;
+            data.id = a.payload.doc.id;
+            return data;
+          });
+        }));
+    return this.historicos;
+  }
+
+  getHistorico(historicoId: any) {
+    this.historicoDocument = this.historicosCollection.doc(historicoId);
+    this.historico = this.historicoDocument.valueChanges();
+    return this.historico;
+  }
+  */
+
+  cadastrarAusencia(alunoId: string, historicoId: string, diario: any) {
+    this.firestore.collection('alunos').doc(alunoId).collection('historicos').doc(historicoId).collection('diarios').add(diario);
   }
 }

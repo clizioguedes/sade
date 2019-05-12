@@ -52,8 +52,6 @@
         <tr>
             <th scope="col">INEP</th>
             <th scope="col">NOME</th>
-            <th scope="col">NASCIMENTO</th>
-            <th scope="col">CPF</th>
             <th scope="col">AÇÕES</th>
         </tr>
     </thead>
@@ -61,10 +59,14 @@
         <tr class="table-active" *ngFor="let aluno of alunosMatriculados">
             <th scope="row">{{aluno.inep}}</th>
             <td>{{aluno.nome}}</td>
-            <td>{{aluno.dataDeNascimento.seconds * 1000 | date: 'dd/MM/yyyy'}}</td>
-            <td>{{aluno.cpf}}</td>
             <td>
-                <button mat-raised-button color="accent">Accent</button>
+                <button class="acoes-matricula" mat-raised-button color="primary" routerLink="/student-details/{{aluno.id}}"
+                    routerLinkActive="router-link-active" matTooltip="Perfil de {{aluno.nome}}">
+                    <mat-icon>account_circle</mat-icon>
+                </button>
+                <button class="acoes-matricula" mat-raised-button color="warn" (click)="cancelaMatricula(aluno.id, aluno.idAluno)" matTooltip="Cancelar Matricula de {{aluno.nome}}">
+                    <mat-icon>close</mat-icon>
+                </button>
             </td>
         </tr>
     </tbody>

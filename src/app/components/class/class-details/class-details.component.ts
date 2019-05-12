@@ -38,13 +38,17 @@ export class ClassDetailsComponent implements OnInit {
       this.firestore.getSubjects(this.idTurma).subscribe(disciplinas => {
         this.disciplinas = disciplinas;
       });
-      this.firestore.getStudentsClass(this.idTurma).subscribe(alunosMatriculados => {
+      this.firestore.getStudentsClass().subscribe(alunosMatriculados => {
         this.alunosMatriculados = alunosMatriculados;
       });
     });
   }
 
   ngOnInit() {
+  }
+
+  cancelaMatricula(docMatriculaId: string, idAluno: string) {
+    this.firestore.cancelaMatricula(docMatriculaId, idAluno);
   }
 
   openDialogAddDisciplina() {
